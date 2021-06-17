@@ -1572,19 +1572,13 @@ static const char __pyx_k_Build_Time_Cython_Trie[] = "Build Time (Cython Trie):"
 static const char __pyx_k_Build_Time_Python_Dict[] = "Build Time (Python Dict):";
 static const char __pyx_k_run_fixed_size_kmer_test[] = "run_fixed_size_kmer_test";
 static const char __pyx_k_run_random_sub_kmer_test[] = "run_random_sub_kmer_test";
-static const char __pyx_k_Random_Sub_Kmer_Test_Runs[] = "Random Sub Kmer Test # Runs:";
-static const char __pyx_k_Random_Sub_Kmer_Test_Result[] = "Random Sub Kmer Test Result:";
 static const char __pyx_k_Fixed_Size_Kmer_Test_k_0_Python[] = "Fixed Size Kmer Test (k = {0}): Python Dict = {1}, Cython Trie = {2}, Result = {3}";
-static const char __pyx_k_Random_Sub_Kmer_Test_Cython_Trie[] = "Random Sub Kmer Test (Cython Trie):";
-static const char __pyx_k_Random_Sub_Kmer_Test_Python_Dict[] = "Random Sub Kmer Test (Python Dict):";
+static const char __pyx_k_Random_Sub_Kmer_Test_Runs_0_Pyth[] = "Random Sub Kmer Test (# Runs = {0}): Python Dict = {1}, Cython Trie = {2}, Result = {3}";
 static PyObject *__pyx_n_b_ACGT;
 static PyObject *__pyx_kp_u_Build_Time_Cython_Trie;
 static PyObject *__pyx_kp_u_Build_Time_Python_Dict;
 static PyObject *__pyx_kp_u_Fixed_Size_Kmer_Test_k_0_Python;
-static PyObject *__pyx_kp_u_Random_Sub_Kmer_Test_Cython_Trie;
-static PyObject *__pyx_kp_u_Random_Sub_Kmer_Test_Python_Dict;
-static PyObject *__pyx_kp_u_Random_Sub_Kmer_Test_Result;
-static PyObject *__pyx_kp_u_Random_Sub_Kmer_Test_Runs;
+static PyObject *__pyx_kp_u_Random_Sub_Kmer_Test_Runs_0_Pyth;
 static PyObject *__pyx_kp_u_Sequence;
 static PyObject *__pyx_kp_b__7;
 static PyObject *__pyx_n_s_alphabet;
@@ -2513,8 +2507,8 @@ static PyObject *__pyx_pf_4test_2run_fixed_size_kmer_test(CYTHON_UNUSED PyObject
  *     cython_time = end - start
  * 
  *     match_count = list(slow_counts.values()) == list(fast_counts.values())             # <<<<<<<<<<<<<<
- * 
  *     print("Fixed Size Kmer Test (k = {0}): Python Dict = {1}, Cython Trie = {2}, Result = {3}".format(
+ *         k, python_time, cython_time, match_count,
  */
   __pyx_t_4 = __Pyx_PyDict_Values(__pyx_v_slow_counts); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 63, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
@@ -2533,30 +2527,30 @@ static PyObject *__pyx_pf_4test_2run_fixed_size_kmer_test(CYTHON_UNUSED PyObject
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __pyx_v_match_count = __pyx_t_15;
 
-  /* "test.pyx":65
- *     match_count = list(slow_counts.values()) == list(fast_counts.values())
+  /* "test.pyx":64
  * 
+ *     match_count = list(slow_counts.values()) == list(fast_counts.values())
  *     print("Fixed Size Kmer Test (k = {0}): Python Dict = {1}, Cython Trie = {2}, Result = {3}".format(             # <<<<<<<<<<<<<<
  *         k, python_time, cython_time, match_count,
  *     ))
  */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_kp_u_Fixed_Size_Kmer_Test_k_0_Python, __pyx_n_s_format); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 65, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_kp_u_Fixed_Size_Kmer_Test_k_0_Python, __pyx_n_s_format); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 64, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
 
-  /* "test.pyx":66
- * 
+  /* "test.pyx":65
+ *     match_count = list(slow_counts.values()) == list(fast_counts.values())
  *     print("Fixed Size Kmer Test (k = {0}): Python Dict = {1}, Cython Trie = {2}, Result = {3}".format(
  *         k, python_time, cython_time, match_count,             # <<<<<<<<<<<<<<
  *     ))
  * 
  */
-  __pyx_t_3 = __Pyx_PyInt_FromSize_t(__pyx_v_k); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 66, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyInt_FromSize_t(__pyx_v_k); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 65, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_2 = PyFloat_FromDouble(__pyx_v_python_time); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 66, __pyx_L1_error)
+  __pyx_t_2 = PyFloat_FromDouble(__pyx_v_python_time); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 65, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_16 = PyFloat_FromDouble(__pyx_v_cython_time); if (unlikely(!__pyx_t_16)) __PYX_ERR(0, 66, __pyx_L1_error)
+  __pyx_t_16 = PyFloat_FromDouble(__pyx_v_cython_time); if (unlikely(!__pyx_t_16)) __PYX_ERR(0, 65, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_16);
-  __pyx_t_17 = __Pyx_PyBool_FromLong(__pyx_v_match_count); if (unlikely(!__pyx_t_17)) __PYX_ERR(0, 66, __pyx_L1_error)
+  __pyx_t_17 = __Pyx_PyBool_FromLong(__pyx_v_match_count); if (unlikely(!__pyx_t_17)) __PYX_ERR(0, 65, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_17);
   __pyx_t_18 = NULL;
   __pyx_t_19 = 0;
@@ -2573,7 +2567,7 @@ static PyObject *__pyx_pf_4test_2run_fixed_size_kmer_test(CYTHON_UNUSED PyObject
   #if CYTHON_FAST_PYCALL
   if (PyFunction_Check(__pyx_t_1)) {
     PyObject *__pyx_temp[5] = {__pyx_t_18, __pyx_t_3, __pyx_t_2, __pyx_t_16, __pyx_t_17};
-    __pyx_t_4 = __Pyx_PyFunction_FastCall(__pyx_t_1, __pyx_temp+1-__pyx_t_19, 4+__pyx_t_19); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 65, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyFunction_FastCall(__pyx_t_1, __pyx_temp+1-__pyx_t_19, 4+__pyx_t_19); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 64, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_18); __pyx_t_18 = 0;
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -2585,7 +2579,7 @@ static PyObject *__pyx_pf_4test_2run_fixed_size_kmer_test(CYTHON_UNUSED PyObject
   #if CYTHON_FAST_PYCCALL
   if (__Pyx_PyFastCFunction_Check(__pyx_t_1)) {
     PyObject *__pyx_temp[5] = {__pyx_t_18, __pyx_t_3, __pyx_t_2, __pyx_t_16, __pyx_t_17};
-    __pyx_t_4 = __Pyx_PyCFunction_FastCall(__pyx_t_1, __pyx_temp+1-__pyx_t_19, 4+__pyx_t_19); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 65, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyCFunction_FastCall(__pyx_t_1, __pyx_temp+1-__pyx_t_19, 4+__pyx_t_19); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 64, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_18); __pyx_t_18 = 0;
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -2595,7 +2589,7 @@ static PyObject *__pyx_pf_4test_2run_fixed_size_kmer_test(CYTHON_UNUSED PyObject
   } else
   #endif
   {
-    __pyx_t_20 = PyTuple_New(4+__pyx_t_19); if (unlikely(!__pyx_t_20)) __PYX_ERR(0, 65, __pyx_L1_error)
+    __pyx_t_20 = PyTuple_New(4+__pyx_t_19); if (unlikely(!__pyx_t_20)) __PYX_ERR(0, 64, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_20);
     if (__pyx_t_18) {
       __Pyx_GIVEREF(__pyx_t_18); PyTuple_SET_ITEM(__pyx_t_20, 0, __pyx_t_18); __pyx_t_18 = NULL;
@@ -2612,20 +2606,20 @@ static PyObject *__pyx_pf_4test_2run_fixed_size_kmer_test(CYTHON_UNUSED PyObject
     __pyx_t_2 = 0;
     __pyx_t_16 = 0;
     __pyx_t_17 = 0;
-    __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_t_20, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 65, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_t_20, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 64, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_20); __pyx_t_20 = 0;
   }
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "test.pyx":65
- *     match_count = list(slow_counts.values()) == list(fast_counts.values())
+  /* "test.pyx":64
  * 
+ *     match_count = list(slow_counts.values()) == list(fast_counts.values())
  *     print("Fixed Size Kmer Test (k = {0}): Python Dict = {1}, Cython Trie = {2}, Result = {3}".format(             # <<<<<<<<<<<<<<
  *         k, python_time, cython_time, match_count,
  *     ))
  */
-  __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_builtin_print, __pyx_t_4); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 65, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_builtin_print, __pyx_t_4); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 64, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
@@ -2668,7 +2662,7 @@ static PyObject *__pyx_pf_4test_2run_fixed_size_kmer_test(CYTHON_UNUSED PyObject
   return __pyx_r;
 }
 
-/* "test.pyx":69
+/* "test.pyx":68
  *     ))
  * 
  * def run_random_sub_kmer_test(dict counts, KmerTrie trie, size_t k_min, size_t k_max, size_t num_runs):             # <<<<<<<<<<<<<<
@@ -2720,29 +2714,29 @@ static PyObject *__pyx_pw_4test_5run_random_sub_kmer_test(PyObject *__pyx_self, 
         case  1:
         if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_trie)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("run_random_sub_kmer_test", 1, 5, 5, 1); __PYX_ERR(0, 69, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("run_random_sub_kmer_test", 1, 5, 5, 1); __PYX_ERR(0, 68, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  2:
         if (likely((values[2] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_k_min)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("run_random_sub_kmer_test", 1, 5, 5, 2); __PYX_ERR(0, 69, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("run_random_sub_kmer_test", 1, 5, 5, 2); __PYX_ERR(0, 68, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  3:
         if (likely((values[3] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_k_max)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("run_random_sub_kmer_test", 1, 5, 5, 3); __PYX_ERR(0, 69, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("run_random_sub_kmer_test", 1, 5, 5, 3); __PYX_ERR(0, 68, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  4:
         if (likely((values[4] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_num_runs)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("run_random_sub_kmer_test", 1, 5, 5, 4); __PYX_ERR(0, 69, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("run_random_sub_kmer_test", 1, 5, 5, 4); __PYX_ERR(0, 68, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "run_random_sub_kmer_test") < 0)) __PYX_ERR(0, 69, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "run_random_sub_kmer_test") < 0)) __PYX_ERR(0, 68, __pyx_L3_error)
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 5) {
       goto __pyx_L5_argtuple_error;
@@ -2755,20 +2749,20 @@ static PyObject *__pyx_pw_4test_5run_random_sub_kmer_test(PyObject *__pyx_self, 
     }
     __pyx_v_counts = ((PyObject*)values[0]);
     __pyx_v_trie = ((struct __pyx_obj_6kmercy_9kmer_trie_KmerTrie *)values[1]);
-    __pyx_v_k_min = __Pyx_PyInt_As_size_t(values[2]); if (unlikely((__pyx_v_k_min == (size_t)-1) && PyErr_Occurred())) __PYX_ERR(0, 69, __pyx_L3_error)
-    __pyx_v_k_max = __Pyx_PyInt_As_size_t(values[3]); if (unlikely((__pyx_v_k_max == (size_t)-1) && PyErr_Occurred())) __PYX_ERR(0, 69, __pyx_L3_error)
-    __pyx_v_num_runs = __Pyx_PyInt_As_size_t(values[4]); if (unlikely((__pyx_v_num_runs == (size_t)-1) && PyErr_Occurred())) __PYX_ERR(0, 69, __pyx_L3_error)
+    __pyx_v_k_min = __Pyx_PyInt_As_size_t(values[2]); if (unlikely((__pyx_v_k_min == (size_t)-1) && PyErr_Occurred())) __PYX_ERR(0, 68, __pyx_L3_error)
+    __pyx_v_k_max = __Pyx_PyInt_As_size_t(values[3]); if (unlikely((__pyx_v_k_max == (size_t)-1) && PyErr_Occurred())) __PYX_ERR(0, 68, __pyx_L3_error)
+    __pyx_v_num_runs = __Pyx_PyInt_As_size_t(values[4]); if (unlikely((__pyx_v_num_runs == (size_t)-1) && PyErr_Occurred())) __PYX_ERR(0, 68, __pyx_L3_error)
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("run_random_sub_kmer_test", 1, 5, 5, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 69, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("run_random_sub_kmer_test", 1, 5, 5, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 68, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("test.run_random_sub_kmer_test", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_counts), (&PyDict_Type), 1, "counts", 1))) __PYX_ERR(0, 69, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_trie), __pyx_ptype_6kmercy_9kmer_trie_KmerTrie, 1, "trie", 0))) __PYX_ERR(0, 69, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_counts), (&PyDict_Type), 1, "counts", 1))) __PYX_ERR(0, 68, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_trie), __pyx_ptype_6kmercy_9kmer_trie_KmerTrie, 1, "trie", 0))) __PYX_ERR(0, 68, __pyx_L1_error)
   __pyx_r = __pyx_pf_4test_4run_random_sub_kmer_test(__pyx_self, __pyx_v_counts, __pyx_v_trie, __pyx_v_k_min, __pyx_v_k_max, __pyx_v_num_runs);
 
   /* function exit code */
@@ -2813,24 +2807,30 @@ static PyObject *__pyx_pf_4test_4run_random_sub_kmer_test(CYTHON_UNUSED PyObject
   size_t __pyx_t_11;
   double __pyx_t_12;
   int __pyx_t_13;
+  PyObject *__pyx_t_14 = NULL;
+  PyObject *__pyx_t_15 = NULL;
+  PyObject *__pyx_t_16 = NULL;
+  PyObject *__pyx_t_17 = NULL;
+  int __pyx_t_18;
+  PyObject *__pyx_t_19 = NULL;
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("run_random_sub_kmer_test", 0);
 
-  /* "test.pyx":72
+  /* "test.pyx":71
  *     cdef:
  *         size_t i
  *         Sequence kmer = Sequence()             # <<<<<<<<<<<<<<
  *         size_t num_sub_kmers = k_max - k_min
  *         bytes kmer_bytes
  */
-  __pyx_t_1 = __Pyx_PyObject_CallNoArg(((PyObject *)__pyx_ptype_6kmercy_8sequence_Sequence)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 72, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_CallNoArg(((PyObject *)__pyx_ptype_6kmercy_8sequence_Sequence)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 71, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_v_kmer = ((struct __pyx_obj_6kmercy_8sequence_Sequence *)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "test.pyx":73
+  /* "test.pyx":72
  *         size_t i
  *         Sequence kmer = Sequence()
  *         size_t num_sub_kmers = k_max - k_min             # <<<<<<<<<<<<<<
@@ -2839,7 +2839,7 @@ static PyObject *__pyx_pf_4test_4run_random_sub_kmer_test(CYTHON_UNUSED PyObject
  */
   __pyx_v_num_sub_kmers = (__pyx_v_k_max - __pyx_v_k_min);
 
-  /* "test.pyx":82
+  /* "test.pyx":81
  *         dict slow_counts
  *         dict fast_counts
  *         double python_time = 0.0             # <<<<<<<<<<<<<<
@@ -2848,7 +2848,7 @@ static PyObject *__pyx_pf_4test_4run_random_sub_kmer_test(CYTHON_UNUSED PyObject
  */
   __pyx_v_python_time = 0.0;
 
-  /* "test.pyx":83
+  /* "test.pyx":82
  *         dict fast_counts
  *         double python_time = 0.0
  *         double cython_time = 0.0             # <<<<<<<<<<<<<<
@@ -2857,7 +2857,7 @@ static PyObject *__pyx_pf_4test_4run_random_sub_kmer_test(CYTHON_UNUSED PyObject
  */
   __pyx_v_cython_time = 0.0;
 
-  /* "test.pyx":84
+  /* "test.pyx":83
  *         double python_time = 0.0
  *         double cython_time = 0.0
  *         bint match_count = True             # <<<<<<<<<<<<<<
@@ -2866,7 +2866,7 @@ static PyObject *__pyx_pf_4test_4run_random_sub_kmer_test(CYTHON_UNUSED PyObject
  */
   __pyx_v_match_count = 1;
 
-  /* "test.pyx":87
+  /* "test.pyx":86
  *         size_t n
  * 
  *     for n in range(num_runs):             # <<<<<<<<<<<<<<
@@ -2878,97 +2878,97 @@ static PyObject *__pyx_pf_4test_4run_random_sub_kmer_test(CYTHON_UNUSED PyObject
   for (__pyx_t_4 = 0; __pyx_t_4 < __pyx_t_3; __pyx_t_4+=1) {
     __pyx_v_n = __pyx_t_4;
 
-    /* "test.pyx":88
+    /* "test.pyx":87
  * 
  *     for n in range(num_runs):
  *         kmer.create(k_max)             # <<<<<<<<<<<<<<
  *         kmer.randomize()
  *         kmer_bytes = bytes(k_max)
  */
-    ((struct __pyx_vtabstruct_6kmercy_8sequence_Sequence *)__pyx_v_kmer->__pyx_vtab)->create(__pyx_v_kmer, __pyx_v_k_max, 0); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 88, __pyx_L1_error)
+    ((struct __pyx_vtabstruct_6kmercy_8sequence_Sequence *)__pyx_v_kmer->__pyx_vtab)->create(__pyx_v_kmer, __pyx_v_k_max, 0); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 87, __pyx_L1_error)
 
-    /* "test.pyx":89
+    /* "test.pyx":88
  *     for n in range(num_runs):
  *         kmer.create(k_max)
  *         kmer.randomize()             # <<<<<<<<<<<<<<
  *         kmer_bytes = bytes(k_max)
  *         kmer.to_bytes(kmer_bytes)
  */
-    ((struct __pyx_vtabstruct_6kmercy_8sequence_Sequence *)__pyx_v_kmer->__pyx_vtab)->randomize(__pyx_v_kmer); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 89, __pyx_L1_error)
+    ((struct __pyx_vtabstruct_6kmercy_8sequence_Sequence *)__pyx_v_kmer->__pyx_vtab)->randomize(__pyx_v_kmer); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 88, __pyx_L1_error)
 
-    /* "test.pyx":90
+    /* "test.pyx":89
  *         kmer.create(k_max)
  *         kmer.randomize()
  *         kmer_bytes = bytes(k_max)             # <<<<<<<<<<<<<<
  *         kmer.to_bytes(kmer_bytes)
  *         sub_kmers = []
  */
-    __pyx_t_1 = __Pyx_PyInt_FromSize_t(__pyx_v_k_max); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 90, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyInt_FromSize_t(__pyx_v_k_max); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 89, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_5 = __Pyx_PyObject_CallOneArg(((PyObject *)(&PyBytes_Type)), __pyx_t_1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 90, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyObject_CallOneArg(((PyObject *)(&PyBytes_Type)), __pyx_t_1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 89, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     __Pyx_XDECREF_SET(__pyx_v_kmer_bytes, ((PyObject*)__pyx_t_5));
     __pyx_t_5 = 0;
 
-    /* "test.pyx":91
+    /* "test.pyx":90
  *         kmer.randomize()
  *         kmer_bytes = bytes(k_max)
  *         kmer.to_bytes(kmer_bytes)             # <<<<<<<<<<<<<<
  *         sub_kmers = []
  *         sub_kmer_bytes = []
  */
-    ((struct __pyx_vtabstruct_6kmercy_8sequence_Sequence *)__pyx_v_kmer->__pyx_vtab)->to_bytes(__pyx_v_kmer, __pyx_v_kmer_bytes); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 91, __pyx_L1_error)
+    ((struct __pyx_vtabstruct_6kmercy_8sequence_Sequence *)__pyx_v_kmer->__pyx_vtab)->to_bytes(__pyx_v_kmer, __pyx_v_kmer_bytes); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 90, __pyx_L1_error)
 
-    /* "test.pyx":92
+    /* "test.pyx":91
  *         kmer_bytes = bytes(k_max)
  *         kmer.to_bytes(kmer_bytes)
  *         sub_kmers = []             # <<<<<<<<<<<<<<
  *         sub_kmer_bytes = []
  *         slow_counts = {}
  */
-    __pyx_t_5 = PyList_New(0); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 92, __pyx_L1_error)
+    __pyx_t_5 = PyList_New(0); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 91, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_XDECREF_SET(__pyx_v_sub_kmers, ((PyObject*)__pyx_t_5));
     __pyx_t_5 = 0;
 
-    /* "test.pyx":93
+    /* "test.pyx":92
  *         kmer.to_bytes(kmer_bytes)
  *         sub_kmers = []
  *         sub_kmer_bytes = []             # <<<<<<<<<<<<<<
  *         slow_counts = {}
  *         fast_counts = {}
  */
-    __pyx_t_5 = PyList_New(0); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 93, __pyx_L1_error)
+    __pyx_t_5 = PyList_New(0); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 92, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_XDECREF_SET(__pyx_v_sub_kmer_bytes, ((PyObject*)__pyx_t_5));
     __pyx_t_5 = 0;
 
-    /* "test.pyx":94
+    /* "test.pyx":93
  *         sub_kmers = []
  *         sub_kmer_bytes = []
  *         slow_counts = {}             # <<<<<<<<<<<<<<
  *         fast_counts = {}
  * 
  */
-    __pyx_t_5 = __Pyx_PyDict_NewPresized(0); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 94, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyDict_NewPresized(0); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 93, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_XDECREF_SET(__pyx_v_slow_counts, ((PyObject*)__pyx_t_5));
     __pyx_t_5 = 0;
 
-    /* "test.pyx":95
+    /* "test.pyx":94
  *         sub_kmer_bytes = []
  *         slow_counts = {}
  *         fast_counts = {}             # <<<<<<<<<<<<<<
  * 
  *         for i in range(k_min, k_max + 1):
  */
-    __pyx_t_5 = __Pyx_PyDict_NewPresized(0); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 95, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyDict_NewPresized(0); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 94, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_XDECREF_SET(__pyx_v_fast_counts, ((PyObject*)__pyx_t_5));
     __pyx_t_5 = 0;
 
-    /* "test.pyx":97
+    /* "test.pyx":96
  *         fast_counts = {}
  * 
  *         for i in range(k_min, k_max + 1):             # <<<<<<<<<<<<<<
@@ -2980,89 +2980,89 @@ static PyObject *__pyx_pf_4test_4run_random_sub_kmer_test(CYTHON_UNUSED PyObject
     for (__pyx_t_8 = __pyx_v_k_min; __pyx_t_8 < __pyx_t_7; __pyx_t_8+=1) {
       __pyx_v_i = __pyx_t_8;
 
-      /* "test.pyx":98
+      /* "test.pyx":97
  * 
  *         for i in range(k_min, k_max + 1):
  *             b_sub_kmer = kmer_bytes[:i]             # <<<<<<<<<<<<<<
  *             sub_kmer = Sequence()
  *             sub_kmer_bytes.append(b_sub_kmer)
  */
-      __pyx_t_5 = PySequence_GetSlice(__pyx_v_kmer_bytes, 0, __pyx_v_i); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 98, __pyx_L1_error)
+      __pyx_t_5 = PySequence_GetSlice(__pyx_v_kmer_bytes, 0, __pyx_v_i); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 97, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
       __Pyx_XDECREF_SET(__pyx_v_b_sub_kmer, ((PyObject*)__pyx_t_5));
       __pyx_t_5 = 0;
 
-      /* "test.pyx":99
+      /* "test.pyx":98
  *         for i in range(k_min, k_max + 1):
  *             b_sub_kmer = kmer_bytes[:i]
  *             sub_kmer = Sequence()             # <<<<<<<<<<<<<<
  *             sub_kmer_bytes.append(b_sub_kmer)
  *             sub_kmer = Sequence()
  */
-      __pyx_t_5 = __Pyx_PyObject_CallNoArg(((PyObject *)__pyx_ptype_6kmercy_8sequence_Sequence)); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 99, __pyx_L1_error)
+      __pyx_t_5 = __Pyx_PyObject_CallNoArg(((PyObject *)__pyx_ptype_6kmercy_8sequence_Sequence)); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 98, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
       __Pyx_XDECREF_SET(__pyx_v_sub_kmer, ((struct __pyx_obj_6kmercy_8sequence_Sequence *)__pyx_t_5));
       __pyx_t_5 = 0;
 
-      /* "test.pyx":100
+      /* "test.pyx":99
  *             b_sub_kmer = kmer_bytes[:i]
  *             sub_kmer = Sequence()
  *             sub_kmer_bytes.append(b_sub_kmer)             # <<<<<<<<<<<<<<
  *             sub_kmer = Sequence()
  *             sub_kmer.create(i)
  */
-      __pyx_t_9 = __Pyx_PyList_Append(__pyx_v_sub_kmer_bytes, __pyx_v_b_sub_kmer); if (unlikely(__pyx_t_9 == ((int)-1))) __PYX_ERR(0, 100, __pyx_L1_error)
+      __pyx_t_9 = __Pyx_PyList_Append(__pyx_v_sub_kmer_bytes, __pyx_v_b_sub_kmer); if (unlikely(__pyx_t_9 == ((int)-1))) __PYX_ERR(0, 99, __pyx_L1_error)
 
-      /* "test.pyx":101
+      /* "test.pyx":100
  *             sub_kmer = Sequence()
  *             sub_kmer_bytes.append(b_sub_kmer)
  *             sub_kmer = Sequence()             # <<<<<<<<<<<<<<
  *             sub_kmer.create(i)
  *             sub_kmer.from_bytes(b_sub_kmer)
  */
-      __pyx_t_5 = __Pyx_PyObject_CallNoArg(((PyObject *)__pyx_ptype_6kmercy_8sequence_Sequence)); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 101, __pyx_L1_error)
+      __pyx_t_5 = __Pyx_PyObject_CallNoArg(((PyObject *)__pyx_ptype_6kmercy_8sequence_Sequence)); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 100, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
       __Pyx_DECREF_SET(__pyx_v_sub_kmer, ((struct __pyx_obj_6kmercy_8sequence_Sequence *)__pyx_t_5));
       __pyx_t_5 = 0;
 
-      /* "test.pyx":102
+      /* "test.pyx":101
  *             sub_kmer_bytes.append(b_sub_kmer)
  *             sub_kmer = Sequence()
  *             sub_kmer.create(i)             # <<<<<<<<<<<<<<
  *             sub_kmer.from_bytes(b_sub_kmer)
  *             sub_kmers.append(sub_kmer)
  */
-      ((struct __pyx_vtabstruct_6kmercy_8sequence_Sequence *)__pyx_v_sub_kmer->__pyx_vtab)->create(__pyx_v_sub_kmer, __pyx_v_i, 0); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 102, __pyx_L1_error)
+      ((struct __pyx_vtabstruct_6kmercy_8sequence_Sequence *)__pyx_v_sub_kmer->__pyx_vtab)->create(__pyx_v_sub_kmer, __pyx_v_i, 0); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 101, __pyx_L1_error)
 
-      /* "test.pyx":103
+      /* "test.pyx":102
  *             sub_kmer = Sequence()
  *             sub_kmer.create(i)
  *             sub_kmer.from_bytes(b_sub_kmer)             # <<<<<<<<<<<<<<
  *             sub_kmers.append(sub_kmer)
  * 
  */
-      ((struct __pyx_vtabstruct_6kmercy_8sequence_Sequence *)__pyx_v_sub_kmer->__pyx_vtab)->from_bytes(__pyx_v_sub_kmer, __pyx_v_b_sub_kmer); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 103, __pyx_L1_error)
+      ((struct __pyx_vtabstruct_6kmercy_8sequence_Sequence *)__pyx_v_sub_kmer->__pyx_vtab)->from_bytes(__pyx_v_sub_kmer, __pyx_v_b_sub_kmer); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 102, __pyx_L1_error)
 
-      /* "test.pyx":104
+      /* "test.pyx":103
  *             sub_kmer.create(i)
  *             sub_kmer.from_bytes(b_sub_kmer)
  *             sub_kmers.append(sub_kmer)             # <<<<<<<<<<<<<<
  * 
  *         start = time.time()
  */
-      __pyx_t_9 = __Pyx_PyList_Append(__pyx_v_sub_kmers, ((PyObject *)__pyx_v_sub_kmer)); if (unlikely(__pyx_t_9 == ((int)-1))) __PYX_ERR(0, 104, __pyx_L1_error)
+      __pyx_t_9 = __Pyx_PyList_Append(__pyx_v_sub_kmers, ((PyObject *)__pyx_v_sub_kmer)); if (unlikely(__pyx_t_9 == ((int)-1))) __PYX_ERR(0, 103, __pyx_L1_error)
     }
 
-    /* "test.pyx":106
+    /* "test.pyx":105
  *             sub_kmers.append(sub_kmer)
  * 
  *         start = time.time()             # <<<<<<<<<<<<<<
  *         for i in range(num_sub_kmers):
  *             b_sub_kmer = <bytes>sub_kmer_bytes[i]
  */
-    __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_time); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 106, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_time); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 105, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_10 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_time); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 106, __pyx_L1_error)
+    __pyx_t_10 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_time); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 105, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_10);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     __pyx_t_1 = NULL;
@@ -3077,13 +3077,13 @@ static PyObject *__pyx_pf_4test_4run_random_sub_kmer_test(CYTHON_UNUSED PyObject
     }
     __pyx_t_5 = (__pyx_t_1) ? __Pyx_PyObject_CallOneArg(__pyx_t_10, __pyx_t_1) : __Pyx_PyObject_CallNoArg(__pyx_t_10);
     __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
-    if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 106, __pyx_L1_error)
+    if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 105, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
     __Pyx_XDECREF_SET(__pyx_v_start, __pyx_t_5);
     __pyx_t_5 = 0;
 
-    /* "test.pyx":107
+    /* "test.pyx":106
  * 
  *         start = time.time()
  *         for i in range(num_sub_kmers):             # <<<<<<<<<<<<<<
@@ -3095,7 +3095,7 @@ static PyObject *__pyx_pf_4test_4run_random_sub_kmer_test(CYTHON_UNUSED PyObject
     for (__pyx_t_8 = 0; __pyx_t_8 < __pyx_t_7; __pyx_t_8+=1) {
       __pyx_v_i = __pyx_t_8;
 
-      /* "test.pyx":108
+      /* "test.pyx":107
  *         start = time.time()
  *         for i in range(num_sub_kmers):
  *             b_sub_kmer = <bytes>sub_kmer_bytes[i]             # <<<<<<<<<<<<<<
@@ -3107,7 +3107,7 @@ static PyObject *__pyx_pf_4test_4run_random_sub_kmer_test(CYTHON_UNUSED PyObject
       __Pyx_XDECREF_SET(__pyx_v_b_sub_kmer, ((PyObject*)__pyx_t_5));
       __pyx_t_5 = 0;
 
-      /* "test.pyx":109
+      /* "test.pyx":108
  *         for i in range(num_sub_kmers):
  *             b_sub_kmer = <bytes>sub_kmer_bytes[i]
  *             count = counts.get(b_sub_kmer, 0)             # <<<<<<<<<<<<<<
@@ -3116,37 +3116,37 @@ static PyObject *__pyx_pf_4test_4run_random_sub_kmer_test(CYTHON_UNUSED PyObject
  */
       if (unlikely(__pyx_v_counts == Py_None)) {
         PyErr_Format(PyExc_AttributeError, "'NoneType' object has no attribute '%.30s'", "get");
-        __PYX_ERR(0, 109, __pyx_L1_error)
+        __PYX_ERR(0, 108, __pyx_L1_error)
       }
-      __pyx_t_5 = __Pyx_PyDict_GetItemDefault(__pyx_v_counts, __pyx_v_b_sub_kmer, __pyx_int_0); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 109, __pyx_L1_error)
+      __pyx_t_5 = __Pyx_PyDict_GetItemDefault(__pyx_v_counts, __pyx_v_b_sub_kmer, __pyx_int_0); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 108, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
-      __pyx_t_11 = __Pyx_PyInt_As_size_t(__pyx_t_5); if (unlikely((__pyx_t_11 == (size_t)-1) && PyErr_Occurred())) __PYX_ERR(0, 109, __pyx_L1_error)
+      __pyx_t_11 = __Pyx_PyInt_As_size_t(__pyx_t_5); if (unlikely((__pyx_t_11 == (size_t)-1) && PyErr_Occurred())) __PYX_ERR(0, 108, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
       __pyx_v_count = __pyx_t_11;
 
-      /* "test.pyx":110
+      /* "test.pyx":109
  *             b_sub_kmer = <bytes>sub_kmer_bytes[i]
  *             count = counts.get(b_sub_kmer, 0)
  *             slow_counts[b_sub_kmer] = count             # <<<<<<<<<<<<<<
  *         end = time.time()
  *         python_time += end - start
  */
-      __pyx_t_5 = __Pyx_PyInt_FromSize_t(__pyx_v_count); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 110, __pyx_L1_error)
+      __pyx_t_5 = __Pyx_PyInt_FromSize_t(__pyx_v_count); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 109, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
-      if (unlikely(PyDict_SetItem(__pyx_v_slow_counts, __pyx_v_b_sub_kmer, __pyx_t_5) < 0)) __PYX_ERR(0, 110, __pyx_L1_error)
+      if (unlikely(PyDict_SetItem(__pyx_v_slow_counts, __pyx_v_b_sub_kmer, __pyx_t_5) < 0)) __PYX_ERR(0, 109, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     }
 
-    /* "test.pyx":111
+    /* "test.pyx":110
  *             count = counts.get(b_sub_kmer, 0)
  *             slow_counts[b_sub_kmer] = count
  *         end = time.time()             # <<<<<<<<<<<<<<
  *         python_time += end - start
  * 
  */
-    __Pyx_GetModuleGlobalName(__pyx_t_10, __pyx_n_s_time); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 111, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_10, __pyx_n_s_time); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 110, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_10);
-    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_10, __pyx_n_s_time); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 111, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_10, __pyx_n_s_time); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 110, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
     __pyx_t_10 = NULL;
@@ -3161,41 +3161,41 @@ static PyObject *__pyx_pf_4test_4run_random_sub_kmer_test(CYTHON_UNUSED PyObject
     }
     __pyx_t_5 = (__pyx_t_10) ? __Pyx_PyObject_CallOneArg(__pyx_t_1, __pyx_t_10) : __Pyx_PyObject_CallNoArg(__pyx_t_1);
     __Pyx_XDECREF(__pyx_t_10); __pyx_t_10 = 0;
-    if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 111, __pyx_L1_error)
+    if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 110, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     __Pyx_XDECREF_SET(__pyx_v_end, __pyx_t_5);
     __pyx_t_5 = 0;
 
-    /* "test.pyx":112
+    /* "test.pyx":111
  *             slow_counts[b_sub_kmer] = count
  *         end = time.time()
  *         python_time += end - start             # <<<<<<<<<<<<<<
  * 
  *         start = time.time()
  */
-    __pyx_t_5 = PyFloat_FromDouble(__pyx_v_python_time); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 112, __pyx_L1_error)
+    __pyx_t_5 = PyFloat_FromDouble(__pyx_v_python_time); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 111, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
-    __pyx_t_1 = PyNumber_Subtract(__pyx_v_end, __pyx_v_start); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 112, __pyx_L1_error)
+    __pyx_t_1 = PyNumber_Subtract(__pyx_v_end, __pyx_v_start); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 111, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_10 = PyNumber_InPlaceAdd(__pyx_t_5, __pyx_t_1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 112, __pyx_L1_error)
+    __pyx_t_10 = PyNumber_InPlaceAdd(__pyx_t_5, __pyx_t_1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 111, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_10);
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __pyx_t_12 = __pyx_PyFloat_AsDouble(__pyx_t_10); if (unlikely((__pyx_t_12 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 112, __pyx_L1_error)
+    __pyx_t_12 = __pyx_PyFloat_AsDouble(__pyx_t_10); if (unlikely((__pyx_t_12 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 111, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
     __pyx_v_python_time = __pyx_t_12;
 
-    /* "test.pyx":114
+    /* "test.pyx":113
  *         python_time += end - start
  * 
  *         start = time.time()             # <<<<<<<<<<<<<<
  *         for i in range(num_sub_kmers):
  *             sub_kmer = <Sequence>sub_kmers[i]
  */
-    __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_time); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 114, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_time); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 113, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_time); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 114, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_time); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 113, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     __pyx_t_1 = NULL;
@@ -3210,13 +3210,13 @@ static PyObject *__pyx_pf_4test_4run_random_sub_kmer_test(CYTHON_UNUSED PyObject
     }
     __pyx_t_10 = (__pyx_t_1) ? __Pyx_PyObject_CallOneArg(__pyx_t_5, __pyx_t_1) : __Pyx_PyObject_CallNoArg(__pyx_t_5);
     __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
-    if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 114, __pyx_L1_error)
+    if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 113, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_10);
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     __Pyx_DECREF_SET(__pyx_v_start, __pyx_t_10);
     __pyx_t_10 = 0;
 
-    /* "test.pyx":115
+    /* "test.pyx":114
  * 
  *         start = time.time()
  *         for i in range(num_sub_kmers):             # <<<<<<<<<<<<<<
@@ -3228,7 +3228,7 @@ static PyObject *__pyx_pf_4test_4run_random_sub_kmer_test(CYTHON_UNUSED PyObject
     for (__pyx_t_8 = 0; __pyx_t_8 < __pyx_t_7; __pyx_t_8+=1) {
       __pyx_v_i = __pyx_t_8;
 
-      /* "test.pyx":116
+      /* "test.pyx":115
  *         start = time.time()
  *         for i in range(num_sub_kmers):
  *             sub_kmer = <Sequence>sub_kmers[i]             # <<<<<<<<<<<<<<
@@ -3240,39 +3240,39 @@ static PyObject *__pyx_pf_4test_4run_random_sub_kmer_test(CYTHON_UNUSED PyObject
       __Pyx_XDECREF_SET(__pyx_v_sub_kmer, ((struct __pyx_obj_6kmercy_8sequence_Sequence *)__pyx_t_10));
       __pyx_t_10 = 0;
 
-      /* "test.pyx":117
+      /* "test.pyx":116
  *         for i in range(num_sub_kmers):
  *             sub_kmer = <Sequence>sub_kmers[i]
  *             count = trie.get_count(sub_kmer)             # <<<<<<<<<<<<<<
  *             fast_counts[sub_kmer] = count
  *         end = time.time()
  */
-      __pyx_t_11 = ((struct __pyx_vtabstruct_6kmercy_9kmer_trie_KmerTrie *)__pyx_v_trie->__pyx_vtab)->get_count(__pyx_v_trie, __pyx_v_sub_kmer); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 117, __pyx_L1_error)
+      __pyx_t_11 = ((struct __pyx_vtabstruct_6kmercy_9kmer_trie_KmerTrie *)__pyx_v_trie->__pyx_vtab)->get_count(__pyx_v_trie, __pyx_v_sub_kmer); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 116, __pyx_L1_error)
       __pyx_v_count = __pyx_t_11;
 
-      /* "test.pyx":118
+      /* "test.pyx":117
  *             sub_kmer = <Sequence>sub_kmers[i]
  *             count = trie.get_count(sub_kmer)
  *             fast_counts[sub_kmer] = count             # <<<<<<<<<<<<<<
  *         end = time.time()
  *         cython_time += end - start
  */
-      __pyx_t_10 = __Pyx_PyInt_FromSize_t(__pyx_v_count); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 118, __pyx_L1_error)
+      __pyx_t_10 = __Pyx_PyInt_FromSize_t(__pyx_v_count); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 117, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_10);
-      if (unlikely(PyDict_SetItem(__pyx_v_fast_counts, ((PyObject *)__pyx_v_sub_kmer), __pyx_t_10) < 0)) __PYX_ERR(0, 118, __pyx_L1_error)
+      if (unlikely(PyDict_SetItem(__pyx_v_fast_counts, ((PyObject *)__pyx_v_sub_kmer), __pyx_t_10) < 0)) __PYX_ERR(0, 117, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
     }
 
-    /* "test.pyx":119
+    /* "test.pyx":118
  *             count = trie.get_count(sub_kmer)
  *             fast_counts[sub_kmer] = count
  *         end = time.time()             # <<<<<<<<<<<<<<
  *         cython_time += end - start
  * 
  */
-    __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_time); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 119, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_time); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 118, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
-    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_time); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 119, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_time); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 118, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     __pyx_t_5 = NULL;
@@ -3287,56 +3287,56 @@ static PyObject *__pyx_pf_4test_4run_random_sub_kmer_test(CYTHON_UNUSED PyObject
     }
     __pyx_t_10 = (__pyx_t_5) ? __Pyx_PyObject_CallOneArg(__pyx_t_1, __pyx_t_5) : __Pyx_PyObject_CallNoArg(__pyx_t_1);
     __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
-    if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 119, __pyx_L1_error)
+    if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 118, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_10);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     __Pyx_DECREF_SET(__pyx_v_end, __pyx_t_10);
     __pyx_t_10 = 0;
 
-    /* "test.pyx":120
+    /* "test.pyx":119
  *             fast_counts[sub_kmer] = count
  *         end = time.time()
  *         cython_time += end - start             # <<<<<<<<<<<<<<
  * 
  *         if list(slow_counts.values()) != list(fast_counts.values()):
  */
-    __pyx_t_10 = PyFloat_FromDouble(__pyx_v_cython_time); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 120, __pyx_L1_error)
+    __pyx_t_10 = PyFloat_FromDouble(__pyx_v_cython_time); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 119, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_10);
-    __pyx_t_1 = PyNumber_Subtract(__pyx_v_end, __pyx_v_start); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 120, __pyx_L1_error)
+    __pyx_t_1 = PyNumber_Subtract(__pyx_v_end, __pyx_v_start); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 119, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_5 = PyNumber_InPlaceAdd(__pyx_t_10, __pyx_t_1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 120, __pyx_L1_error)
+    __pyx_t_5 = PyNumber_InPlaceAdd(__pyx_t_10, __pyx_t_1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 119, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __pyx_t_12 = __pyx_PyFloat_AsDouble(__pyx_t_5); if (unlikely((__pyx_t_12 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 120, __pyx_L1_error)
+    __pyx_t_12 = __pyx_PyFloat_AsDouble(__pyx_t_5); if (unlikely((__pyx_t_12 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 119, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     __pyx_v_cython_time = __pyx_t_12;
 
-    /* "test.pyx":122
+    /* "test.pyx":121
  *         cython_time += end - start
  * 
  *         if list(slow_counts.values()) != list(fast_counts.values()):             # <<<<<<<<<<<<<<
  *             match_count = False
  * 
  */
-    __pyx_t_5 = __Pyx_PyDict_Values(__pyx_v_slow_counts); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 122, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyDict_Values(__pyx_v_slow_counts); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 121, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
-    __pyx_t_1 = PySequence_List(__pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 122, __pyx_L1_error)
+    __pyx_t_1 = PySequence_List(__pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 121, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-    __pyx_t_5 = __Pyx_PyDict_Values(__pyx_v_fast_counts); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 122, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyDict_Values(__pyx_v_fast_counts); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 121, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
-    __pyx_t_10 = PySequence_List(__pyx_t_5); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 122, __pyx_L1_error)
+    __pyx_t_10 = PySequence_List(__pyx_t_5); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 121, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_10);
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-    __pyx_t_5 = PyObject_RichCompare(__pyx_t_1, __pyx_t_10, Py_NE); __Pyx_XGOTREF(__pyx_t_5); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 122, __pyx_L1_error)
+    __pyx_t_5 = PyObject_RichCompare(__pyx_t_1, __pyx_t_10, Py_NE); __Pyx_XGOTREF(__pyx_t_5); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 121, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
-    __pyx_t_13 = __Pyx_PyObject_IsTrue(__pyx_t_5); if (unlikely(__pyx_t_13 < 0)) __PYX_ERR(0, 122, __pyx_L1_error)
+    __pyx_t_13 = __Pyx_PyObject_IsTrue(__pyx_t_5); if (unlikely(__pyx_t_13 < 0)) __PYX_ERR(0, 121, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     if (__pyx_t_13) {
 
-      /* "test.pyx":123
+      /* "test.pyx":122
  * 
  *         if list(slow_counts.values()) != list(fast_counts.values()):
  *             match_count = False             # <<<<<<<<<<<<<<
@@ -3345,7 +3345,7 @@ static PyObject *__pyx_pf_4test_4run_random_sub_kmer_test(CYTHON_UNUSED PyObject
  */
       __pyx_v_match_count = 0;
 
-      /* "test.pyx":122
+      /* "test.pyx":121
  *         cython_time += end - start
  * 
  *         if list(slow_counts.values()) != list(fast_counts.values()):             # <<<<<<<<<<<<<<
@@ -3354,16 +3354,16 @@ static PyObject *__pyx_pf_4test_4run_random_sub_kmer_test(CYTHON_UNUSED PyObject
  */
     }
 
-    /* "test.pyx":125
+    /* "test.pyx":124
  *             match_count = False
  * 
  *         kmer.delete()             # <<<<<<<<<<<<<<
  *         for i in range(num_sub_kmers):
  *             <Sequence>sub_kmers[i].delete()
  */
-    ((struct __pyx_vtabstruct_6kmercy_8sequence_Sequence *)__pyx_v_kmer->__pyx_vtab)->delete(__pyx_v_kmer, 0); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 125, __pyx_L1_error)
+    ((struct __pyx_vtabstruct_6kmercy_8sequence_Sequence *)__pyx_v_kmer->__pyx_vtab)->delete(__pyx_v_kmer, 0); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 124, __pyx_L1_error)
 
-    /* "test.pyx":126
+    /* "test.pyx":125
  * 
  *         kmer.delete()
  *         for i in range(num_sub_kmers):             # <<<<<<<<<<<<<<
@@ -3375,14 +3375,14 @@ static PyObject *__pyx_pf_4test_4run_random_sub_kmer_test(CYTHON_UNUSED PyObject
     for (__pyx_t_8 = 0; __pyx_t_8 < __pyx_t_7; __pyx_t_8+=1) {
       __pyx_v_i = __pyx_t_8;
 
-      /* "test.pyx":127
+      /* "test.pyx":126
  *         kmer.delete()
  *         for i in range(num_sub_kmers):
  *             <Sequence>sub_kmers[i].delete()             # <<<<<<<<<<<<<<
  * 
  *     kmer_bytes = None
  */
-      __pyx_t_10 = __Pyx_PyObject_GetAttrStr(PyList_GET_ITEM(__pyx_v_sub_kmers, __pyx_v_i), __pyx_n_s_delete); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 127, __pyx_L1_error)
+      __pyx_t_10 = __Pyx_PyObject_GetAttrStr(PyList_GET_ITEM(__pyx_v_sub_kmers, __pyx_v_i), __pyx_n_s_delete); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 126, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_10);
       __pyx_t_1 = NULL;
       if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_10))) {
@@ -3396,7 +3396,7 @@ static PyObject *__pyx_pf_4test_4run_random_sub_kmer_test(CYTHON_UNUSED PyObject
       }
       __pyx_t_5 = (__pyx_t_1) ? __Pyx_PyObject_CallOneArg(__pyx_t_10, __pyx_t_1) : __Pyx_PyObject_CallNoArg(__pyx_t_10);
       __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
-      if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 127, __pyx_L1_error)
+      if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 126, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
       __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
       (void)(((struct __pyx_obj_6kmercy_8sequence_Sequence *)__pyx_t_5));
@@ -3404,7 +3404,7 @@ static PyObject *__pyx_pf_4test_4run_random_sub_kmer_test(CYTHON_UNUSED PyObject
     }
   }
 
-  /* "test.pyx":129
+  /* "test.pyx":128
  *             <Sequence>sub_kmers[i].delete()
  * 
  *     kmer_bytes = None             # <<<<<<<<<<<<<<
@@ -3414,115 +3414,124 @@ static PyObject *__pyx_pf_4test_4run_random_sub_kmer_test(CYTHON_UNUSED PyObject
   __Pyx_INCREF(Py_None);
   __Pyx_XDECREF_SET(__pyx_v_kmer_bytes, ((PyObject*)Py_None));
 
-  /* "test.pyx":130
+  /* "test.pyx":129
  * 
  *     kmer_bytes = None
  *     sub_kmers = None             # <<<<<<<<<<<<<<
  *     sub_kmer_bytes = None
- * 
+ *     print("Random Sub Kmer Test (# Runs = {0}): Python Dict = {1}, Cython Trie = {2}, Result = {3}".format(
  */
   __Pyx_INCREF(Py_None);
   __Pyx_XDECREF_SET(__pyx_v_sub_kmers, ((PyObject*)Py_None));
 
-  /* "test.pyx":131
+  /* "test.pyx":130
  *     kmer_bytes = None
  *     sub_kmers = None
  *     sub_kmer_bytes = None             # <<<<<<<<<<<<<<
- * 
- *     print("Random Sub Kmer Test # Runs:", num_runs)
+ *     print("Random Sub Kmer Test (# Runs = {0}): Python Dict = {1}, Cython Trie = {2}, Result = {3}".format(
+ *         num_runs, python_time, cython_time, match_count,
  */
   __Pyx_INCREF(Py_None);
   __Pyx_XDECREF_SET(__pyx_v_sub_kmer_bytes, ((PyObject*)Py_None));
 
-  /* "test.pyx":133
+  /* "test.pyx":131
+ *     sub_kmers = None
  *     sub_kmer_bytes = None
- * 
- *     print("Random Sub Kmer Test # Runs:", num_runs)             # <<<<<<<<<<<<<<
- *     print("Random Sub Kmer Test (Python Dict):", python_time)
- *     print("Random Sub Kmer Test (Cython Trie):", cython_time)
+ *     print("Random Sub Kmer Test (# Runs = {0}): Python Dict = {1}, Cython Trie = {2}, Result = {3}".format(             # <<<<<<<<<<<<<<
+ *         num_runs, python_time, cython_time, match_count,
+ *     ))
  */
-  __pyx_t_5 = __Pyx_PyInt_FromSize_t(__pyx_v_num_runs); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 133, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_5);
-  __pyx_t_10 = PyTuple_New(2); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 133, __pyx_L1_error)
+  __pyx_t_10 = __Pyx_PyObject_GetAttrStr(__pyx_kp_u_Random_Sub_Kmer_Test_Runs_0_Pyth, __pyx_n_s_format); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 131, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_10);
-  __Pyx_INCREF(__pyx_kp_u_Random_Sub_Kmer_Test_Runs);
-  __Pyx_GIVEREF(__pyx_kp_u_Random_Sub_Kmer_Test_Runs);
-  PyTuple_SET_ITEM(__pyx_t_10, 0, __pyx_kp_u_Random_Sub_Kmer_Test_Runs);
-  __Pyx_GIVEREF(__pyx_t_5);
-  PyTuple_SET_ITEM(__pyx_t_10, 1, __pyx_t_5);
-  __pyx_t_5 = 0;
-  __pyx_t_5 = __Pyx_PyObject_Call(__pyx_builtin_print, __pyx_t_10, NULL); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 133, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_5);
-  __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
-  __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-  /* "test.pyx":134
- * 
- *     print("Random Sub Kmer Test # Runs:", num_runs)
- *     print("Random Sub Kmer Test (Python Dict):", python_time)             # <<<<<<<<<<<<<<
- *     print("Random Sub Kmer Test (Cython Trie):", cython_time)
- *     print("Random Sub Kmer Test Result:", match_count)
- */
-  __pyx_t_5 = PyFloat_FromDouble(__pyx_v_python_time); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 134, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_5);
-  __pyx_t_10 = PyTuple_New(2); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 134, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_10);
-  __Pyx_INCREF(__pyx_kp_u_Random_Sub_Kmer_Test_Python_Dict);
-  __Pyx_GIVEREF(__pyx_kp_u_Random_Sub_Kmer_Test_Python_Dict);
-  PyTuple_SET_ITEM(__pyx_t_10, 0, __pyx_kp_u_Random_Sub_Kmer_Test_Python_Dict);
-  __Pyx_GIVEREF(__pyx_t_5);
-  PyTuple_SET_ITEM(__pyx_t_10, 1, __pyx_t_5);
-  __pyx_t_5 = 0;
-  __pyx_t_5 = __Pyx_PyObject_Call(__pyx_builtin_print, __pyx_t_10, NULL); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 134, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_5);
-  __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
-  __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-
-  /* "test.pyx":135
- *     print("Random Sub Kmer Test # Runs:", num_runs)
- *     print("Random Sub Kmer Test (Python Dict):", python_time)
- *     print("Random Sub Kmer Test (Cython Trie):", cython_time)             # <<<<<<<<<<<<<<
- *     print("Random Sub Kmer Test Result:", match_count)
+  /* "test.pyx":132
+ *     sub_kmer_bytes = None
+ *     print("Random Sub Kmer Test (# Runs = {0}): Python Dict = {1}, Cython Trie = {2}, Result = {3}".format(
+ *         num_runs, python_time, cython_time, match_count,             # <<<<<<<<<<<<<<
+ *     ))
  * 
  */
-  __pyx_t_5 = PyFloat_FromDouble(__pyx_v_cython_time); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 135, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_5);
-  __pyx_t_10 = PyTuple_New(2); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 135, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_10);
-  __Pyx_INCREF(__pyx_kp_u_Random_Sub_Kmer_Test_Cython_Trie);
-  __Pyx_GIVEREF(__pyx_kp_u_Random_Sub_Kmer_Test_Cython_Trie);
-  PyTuple_SET_ITEM(__pyx_t_10, 0, __pyx_kp_u_Random_Sub_Kmer_Test_Cython_Trie);
-  __Pyx_GIVEREF(__pyx_t_5);
-  PyTuple_SET_ITEM(__pyx_t_10, 1, __pyx_t_5);
-  __pyx_t_5 = 0;
-  __pyx_t_5 = __Pyx_PyObject_Call(__pyx_builtin_print, __pyx_t_10, NULL); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 135, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_5);
+  __pyx_t_1 = __Pyx_PyInt_FromSize_t(__pyx_v_num_runs); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 132, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_t_14 = PyFloat_FromDouble(__pyx_v_python_time); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 132, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_14);
+  __pyx_t_15 = PyFloat_FromDouble(__pyx_v_cython_time); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 132, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_15);
+  __pyx_t_16 = __Pyx_PyBool_FromLong(__pyx_v_match_count); if (unlikely(!__pyx_t_16)) __PYX_ERR(0, 132, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_16);
+  __pyx_t_17 = NULL;
+  __pyx_t_18 = 0;
+  if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_10))) {
+    __pyx_t_17 = PyMethod_GET_SELF(__pyx_t_10);
+    if (likely(__pyx_t_17)) {
+      PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_10);
+      __Pyx_INCREF(__pyx_t_17);
+      __Pyx_INCREF(function);
+      __Pyx_DECREF_SET(__pyx_t_10, function);
+      __pyx_t_18 = 1;
+    }
+  }
+  #if CYTHON_FAST_PYCALL
+  if (PyFunction_Check(__pyx_t_10)) {
+    PyObject *__pyx_temp[5] = {__pyx_t_17, __pyx_t_1, __pyx_t_14, __pyx_t_15, __pyx_t_16};
+    __pyx_t_5 = __Pyx_PyFunction_FastCall(__pyx_t_10, __pyx_temp+1-__pyx_t_18, 4+__pyx_t_18); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 131, __pyx_L1_error)
+    __Pyx_XDECREF(__pyx_t_17); __pyx_t_17 = 0;
+    __Pyx_GOTREF(__pyx_t_5);
+    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+    __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
+    __Pyx_DECREF(__pyx_t_15); __pyx_t_15 = 0;
+    __Pyx_DECREF(__pyx_t_16); __pyx_t_16 = 0;
+  } else
+  #endif
+  #if CYTHON_FAST_PYCCALL
+  if (__Pyx_PyFastCFunction_Check(__pyx_t_10)) {
+    PyObject *__pyx_temp[5] = {__pyx_t_17, __pyx_t_1, __pyx_t_14, __pyx_t_15, __pyx_t_16};
+    __pyx_t_5 = __Pyx_PyCFunction_FastCall(__pyx_t_10, __pyx_temp+1-__pyx_t_18, 4+__pyx_t_18); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 131, __pyx_L1_error)
+    __Pyx_XDECREF(__pyx_t_17); __pyx_t_17 = 0;
+    __Pyx_GOTREF(__pyx_t_5);
+    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+    __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
+    __Pyx_DECREF(__pyx_t_15); __pyx_t_15 = 0;
+    __Pyx_DECREF(__pyx_t_16); __pyx_t_16 = 0;
+  } else
+  #endif
+  {
+    __pyx_t_19 = PyTuple_New(4+__pyx_t_18); if (unlikely(!__pyx_t_19)) __PYX_ERR(0, 131, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_19);
+    if (__pyx_t_17) {
+      __Pyx_GIVEREF(__pyx_t_17); PyTuple_SET_ITEM(__pyx_t_19, 0, __pyx_t_17); __pyx_t_17 = NULL;
+    }
+    __Pyx_GIVEREF(__pyx_t_1);
+    PyTuple_SET_ITEM(__pyx_t_19, 0+__pyx_t_18, __pyx_t_1);
+    __Pyx_GIVEREF(__pyx_t_14);
+    PyTuple_SET_ITEM(__pyx_t_19, 1+__pyx_t_18, __pyx_t_14);
+    __Pyx_GIVEREF(__pyx_t_15);
+    PyTuple_SET_ITEM(__pyx_t_19, 2+__pyx_t_18, __pyx_t_15);
+    __Pyx_GIVEREF(__pyx_t_16);
+    PyTuple_SET_ITEM(__pyx_t_19, 3+__pyx_t_18, __pyx_t_16);
+    __pyx_t_1 = 0;
+    __pyx_t_14 = 0;
+    __pyx_t_15 = 0;
+    __pyx_t_16 = 0;
+    __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_10, __pyx_t_19, NULL); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 131, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_5);
+    __Pyx_DECREF(__pyx_t_19); __pyx_t_19 = 0;
+  }
   __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
-  __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-  /* "test.pyx":136
- *     print("Random Sub Kmer Test (Python Dict):", python_time)
- *     print("Random Sub Kmer Test (Cython Trie):", cython_time)
- *     print("Random Sub Kmer Test Result:", match_count)             # <<<<<<<<<<<<<<
- * 
- * cdef:
+  /* "test.pyx":131
+ *     sub_kmers = None
+ *     sub_kmer_bytes = None
+ *     print("Random Sub Kmer Test (# Runs = {0}): Python Dict = {1}, Cython Trie = {2}, Result = {3}".format(             # <<<<<<<<<<<<<<
+ *         num_runs, python_time, cython_time, match_count,
+ *     ))
  */
-  __pyx_t_5 = __Pyx_PyBool_FromLong(__pyx_v_match_count); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 136, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_5);
-  __pyx_t_10 = PyTuple_New(2); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 136, __pyx_L1_error)
+  __pyx_t_10 = __Pyx_PyObject_CallOneArg(__pyx_builtin_print, __pyx_t_5); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 131, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_10);
-  __Pyx_INCREF(__pyx_kp_u_Random_Sub_Kmer_Test_Result);
-  __Pyx_GIVEREF(__pyx_kp_u_Random_Sub_Kmer_Test_Result);
-  PyTuple_SET_ITEM(__pyx_t_10, 0, __pyx_kp_u_Random_Sub_Kmer_Test_Result);
-  __Pyx_GIVEREF(__pyx_t_5);
-  PyTuple_SET_ITEM(__pyx_t_10, 1, __pyx_t_5);
-  __pyx_t_5 = 0;
-  __pyx_t_5 = __Pyx_PyObject_Call(__pyx_builtin_print, __pyx_t_10, NULL); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 136, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_5);
-  __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+  __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
 
-  /* "test.pyx":69
+  /* "test.pyx":68
  *     ))
  * 
  * def run_random_sub_kmer_test(dict counts, KmerTrie trie, size_t k_min, size_t k_max, size_t num_runs):             # <<<<<<<<<<<<<<
@@ -3537,6 +3546,11 @@ static PyObject *__pyx_pf_4test_4run_random_sub_kmer_test(CYTHON_UNUSED PyObject
   __Pyx_XDECREF(__pyx_t_1);
   __Pyx_XDECREF(__pyx_t_5);
   __Pyx_XDECREF(__pyx_t_10);
+  __Pyx_XDECREF(__pyx_t_14);
+  __Pyx_XDECREF(__pyx_t_15);
+  __Pyx_XDECREF(__pyx_t_16);
+  __Pyx_XDECREF(__pyx_t_17);
+  __Pyx_XDECREF(__pyx_t_19);
   __Pyx_AddTraceback("test.run_random_sub_kmer_test", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
@@ -3605,10 +3619,7 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_kp_u_Build_Time_Cython_Trie, __pyx_k_Build_Time_Cython_Trie, sizeof(__pyx_k_Build_Time_Cython_Trie), 0, 1, 0, 0},
   {&__pyx_kp_u_Build_Time_Python_Dict, __pyx_k_Build_Time_Python_Dict, sizeof(__pyx_k_Build_Time_Python_Dict), 0, 1, 0, 0},
   {&__pyx_kp_u_Fixed_Size_Kmer_Test_k_0_Python, __pyx_k_Fixed_Size_Kmer_Test_k_0_Python, sizeof(__pyx_k_Fixed_Size_Kmer_Test_k_0_Python), 0, 1, 0, 0},
-  {&__pyx_kp_u_Random_Sub_Kmer_Test_Cython_Trie, __pyx_k_Random_Sub_Kmer_Test_Cython_Trie, sizeof(__pyx_k_Random_Sub_Kmer_Test_Cython_Trie), 0, 1, 0, 0},
-  {&__pyx_kp_u_Random_Sub_Kmer_Test_Python_Dict, __pyx_k_Random_Sub_Kmer_Test_Python_Dict, sizeof(__pyx_k_Random_Sub_Kmer_Test_Python_Dict), 0, 1, 0, 0},
-  {&__pyx_kp_u_Random_Sub_Kmer_Test_Result, __pyx_k_Random_Sub_Kmer_Test_Result, sizeof(__pyx_k_Random_Sub_Kmer_Test_Result), 0, 1, 0, 0},
-  {&__pyx_kp_u_Random_Sub_Kmer_Test_Runs, __pyx_k_Random_Sub_Kmer_Test_Runs, sizeof(__pyx_k_Random_Sub_Kmer_Test_Runs), 0, 1, 0, 0},
+  {&__pyx_kp_u_Random_Sub_Kmer_Test_Runs_0_Pyth, __pyx_k_Random_Sub_Kmer_Test_Runs_0_Pyth, sizeof(__pyx_k_Random_Sub_Kmer_Test_Runs_0_Pyth), 0, 1, 0, 0},
   {&__pyx_kp_u_Sequence, __pyx_k_Sequence, sizeof(__pyx_k_Sequence), 0, 1, 0, 0},
   {&__pyx_kp_b__7, __pyx_k__7, sizeof(__pyx_k__7), 0, 0, 0, 0},
   {&__pyx_n_s_alphabet, __pyx_k_alphabet, sizeof(__pyx_k_alphabet), 0, 0, 1, 1},
@@ -3670,8 +3681,8 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {0, 0, 0, 0, 0, 0, 0}
 };
 static CYTHON_SMALL_CODE int __Pyx_InitCachedBuiltins(void) {
-  __pyx_builtin_print = __Pyx_GetBuiltinName(__pyx_n_s_print); if (!__pyx_builtin_print) __PYX_ERR(0, 159, __pyx_L1_error)
-  __pyx_builtin_range = __Pyx_GetBuiltinName(__pyx_n_s_range); if (!__pyx_builtin_range) __PYX_ERR(0, 171, __pyx_L1_error)
+  __pyx_builtin_print = __Pyx_GetBuiltinName(__pyx_n_s_print); if (!__pyx_builtin_print) __PYX_ERR(0, 156, __pyx_L1_error)
+  __pyx_builtin_range = __Pyx_GetBuiltinName(__pyx_n_s_range); if (!__pyx_builtin_range) __PYX_ERR(0, 168, __pyx_L1_error)
   return 0;
   __pyx_L1_error:;
   return -1;
@@ -3705,17 +3716,17 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __Pyx_GIVEREF(__pyx_tuple__3);
   __pyx_codeobj__4 = (PyObject*)__Pyx_PyCode_New(3, 0, 21, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__3, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_test_pyx, __pyx_n_s_run_fixed_size_kmer_test, 16, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__4)) __PYX_ERR(0, 16, __pyx_L1_error)
 
-  /* "test.pyx":69
+  /* "test.pyx":68
  *     ))
  * 
  * def run_random_sub_kmer_test(dict counts, KmerTrie trie, size_t k_min, size_t k_max, size_t num_runs):             # <<<<<<<<<<<<<<
  *     cdef:
  *         size_t i
  */
-  __pyx_tuple__5 = PyTuple_Pack(22, __pyx_n_s_counts, __pyx_n_s_trie, __pyx_n_s_k_min, __pyx_n_s_k_max, __pyx_n_s_num_runs, __pyx_n_s_i, __pyx_n_s_kmer, __pyx_n_s_num_sub_kmers, __pyx_n_s_kmer_bytes, __pyx_n_s_sub_kmer, __pyx_n_s_b_sub_kmer, __pyx_n_s_sub_kmers, __pyx_n_s_sub_kmer_bytes, __pyx_n_s_count, __pyx_n_s_slow_counts, __pyx_n_s_fast_counts, __pyx_n_s_python_time, __pyx_n_s_cython_time, __pyx_n_s_match_count, __pyx_n_s_n, __pyx_n_s_start, __pyx_n_s_end); if (unlikely(!__pyx_tuple__5)) __PYX_ERR(0, 69, __pyx_L1_error)
+  __pyx_tuple__5 = PyTuple_Pack(22, __pyx_n_s_counts, __pyx_n_s_trie, __pyx_n_s_k_min, __pyx_n_s_k_max, __pyx_n_s_num_runs, __pyx_n_s_i, __pyx_n_s_kmer, __pyx_n_s_num_sub_kmers, __pyx_n_s_kmer_bytes, __pyx_n_s_sub_kmer, __pyx_n_s_b_sub_kmer, __pyx_n_s_sub_kmers, __pyx_n_s_sub_kmer_bytes, __pyx_n_s_count, __pyx_n_s_slow_counts, __pyx_n_s_fast_counts, __pyx_n_s_python_time, __pyx_n_s_cython_time, __pyx_n_s_match_count, __pyx_n_s_n, __pyx_n_s_start, __pyx_n_s_end); if (unlikely(!__pyx_tuple__5)) __PYX_ERR(0, 68, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__5);
   __Pyx_GIVEREF(__pyx_tuple__5);
-  __pyx_codeobj__6 = (PyObject*)__Pyx_PyCode_New(5, 0, 22, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__5, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_test_pyx, __pyx_n_s_run_random_sub_kmer_test, 69, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__6)) __PYX_ERR(0, 69, __pyx_L1_error)
+  __pyx_codeobj__6 = (PyObject*)__Pyx_PyCode_New(5, 0, 22, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__5, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_test_pyx, __pyx_n_s_run_random_sub_kmer_test, 68, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__6)) __PYX_ERR(0, 68, __pyx_L1_error)
   __Pyx_RefNannyFinishContext();
   return 0;
   __pyx_L1_error:;
@@ -4083,19 +4094,19 @@ if (!__Pyx_RefNanny) {
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_run_fixed_size_kmer_test, __pyx_t_1) < 0) __PYX_ERR(0, 16, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "test.pyx":69
+  /* "test.pyx":68
  *     ))
  * 
  * def run_random_sub_kmer_test(dict counts, KmerTrie trie, size_t k_min, size_t k_max, size_t num_runs):             # <<<<<<<<<<<<<<
  *     cdef:
  *         size_t i
  */
-  __pyx_t_1 = __Pyx_CyFunction_New(&__pyx_mdef_4test_5run_random_sub_kmer_test, 0, __pyx_n_s_run_random_sub_kmer_test, NULL, __pyx_n_s_test, __pyx_d, ((PyObject *)__pyx_codeobj__6)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 69, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_CyFunction_New(&__pyx_mdef_4test_5run_random_sub_kmer_test, 0, __pyx_n_s_run_random_sub_kmer_test, NULL, __pyx_n_s_test, __pyx_d, ((PyObject *)__pyx_codeobj__6)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 68, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_run_random_sub_kmer_test, __pyx_t_1) < 0) __PYX_ERR(0, 69, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_run_random_sub_kmer_test, __pyx_t_1) < 0) __PYX_ERR(0, 68, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "test.pyx":139
+  /* "test.pyx":136
  * 
  * cdef:
  *     size_t num_bases = 130_000             # <<<<<<<<<<<<<<
@@ -4104,7 +4115,7 @@ if (!__Pyx_RefNanny) {
  */
   __pyx_v_4test_num_bases = 0x1FBD0;
 
-  /* "test.pyx":144
+  /* "test.pyx":141
  *     dict counts
  *     KmerTrie trie
  *     size_t k_min = 3             # <<<<<<<<<<<<<<
@@ -4113,7 +4124,7 @@ if (!__Pyx_RefNanny) {
  */
   __pyx_v_4test_k_min = 3;
 
-  /* "test.pyx":145
+  /* "test.pyx":142
  *     KmerTrie trie
  *     size_t k_min = 3
  *     size_t k_max = 16             # <<<<<<<<<<<<<<
@@ -4122,7 +4133,7 @@ if (!__Pyx_RefNanny) {
  */
   __pyx_v_4test_k_max = 16;
 
-  /* "test.pyx":146
+  /* "test.pyx":143
  *     size_t k_min = 3
  *     size_t k_max = 16
  *     size_t fixed_k_min = 3             # <<<<<<<<<<<<<<
@@ -4131,7 +4142,7 @@ if (!__Pyx_RefNanny) {
  */
   __pyx_v_4test_fixed_k_min = 3;
 
-  /* "test.pyx":147
+  /* "test.pyx":144
  *     size_t k_max = 16
  *     size_t fixed_k_min = 3
  *     size_t fixed_k_max = 8             # <<<<<<<<<<<<<<
@@ -4140,7 +4151,7 @@ if (!__Pyx_RefNanny) {
  */
   __pyx_v_4test_fixed_k_max = 8;
 
-  /* "test.pyx":149
+  /* "test.pyx":146
  *     size_t fixed_k_max = 8
  *     size_t k
  *     size_t num_runs = 10_000             # <<<<<<<<<<<<<<
@@ -4149,30 +4160,30 @@ if (!__Pyx_RefNanny) {
  */
   __pyx_v_4test_num_runs = 0x2710;
 
-  /* "test.pyx":151
+  /* "test.pyx":148
  *     size_t num_runs = 10_000
  * 
  * seq = Sequence()             # <<<<<<<<<<<<<<
  * seq_bytes = bytes(num_bases)
  * counts = {}
  */
-  __pyx_t_1 = __Pyx_PyObject_CallNoArg(((PyObject *)__pyx_ptype_6kmercy_8sequence_Sequence)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 151, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_CallNoArg(((PyObject *)__pyx_ptype_6kmercy_8sequence_Sequence)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 148, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_XGOTREF(((PyObject *)__pyx_v_4test_seq));
   __Pyx_DECREF_SET(__pyx_v_4test_seq, ((struct __pyx_obj_6kmercy_8sequence_Sequence *)__pyx_t_1));
   __Pyx_GIVEREF(__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "test.pyx":152
+  /* "test.pyx":149
  * 
  * seq = Sequence()
  * seq_bytes = bytes(num_bases)             # <<<<<<<<<<<<<<
  * counts = {}
  * trie = KmerTrie()
  */
-  __pyx_t_1 = __Pyx_PyInt_FromSize_t(__pyx_v_4test_num_bases); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 152, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyInt_FromSize_t(__pyx_v_4test_num_bases); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 149, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyObject_CallOneArg(((PyObject *)(&PyBytes_Type)), __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 152, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_CallOneArg(((PyObject *)(&PyBytes_Type)), __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 149, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_XGOTREF(__pyx_v_4test_seq_bytes);
@@ -4180,53 +4191,53 @@ if (!__Pyx_RefNanny) {
   __Pyx_GIVEREF(__pyx_t_2);
   __pyx_t_2 = 0;
 
-  /* "test.pyx":153
+  /* "test.pyx":150
  * seq = Sequence()
  * seq_bytes = bytes(num_bases)
  * counts = {}             # <<<<<<<<<<<<<<
  * trie = KmerTrie()
  * 
  */
-  __pyx_t_2 = __Pyx_PyDict_NewPresized(0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 153, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyDict_NewPresized(0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 150, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_XGOTREF(__pyx_v_4test_counts);
   __Pyx_DECREF_SET(__pyx_v_4test_counts, ((PyObject*)__pyx_t_2));
   __Pyx_GIVEREF(__pyx_t_2);
   __pyx_t_2 = 0;
 
-  /* "test.pyx":154
+  /* "test.pyx":151
  * seq_bytes = bytes(num_bases)
  * counts = {}
  * trie = KmerTrie()             # <<<<<<<<<<<<<<
  * 
  * seq.create(num_bases)
  */
-  __pyx_t_2 = __Pyx_PyObject_CallNoArg(((PyObject *)__pyx_ptype_6kmercy_9kmer_trie_KmerTrie)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 154, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_CallNoArg(((PyObject *)__pyx_ptype_6kmercy_9kmer_trie_KmerTrie)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 151, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_XGOTREF(((PyObject *)__pyx_v_4test_trie));
   __Pyx_DECREF_SET(__pyx_v_4test_trie, ((struct __pyx_obj_6kmercy_9kmer_trie_KmerTrie *)__pyx_t_2));
   __Pyx_GIVEREF(__pyx_t_2);
   __pyx_t_2 = 0;
 
-  /* "test.pyx":156
+  /* "test.pyx":153
  * trie = KmerTrie()
  * 
  * seq.create(num_bases)             # <<<<<<<<<<<<<<
  * seq.randomize()
  * seq.to_bytes(seq_bytes)
  */
-  ((struct __pyx_vtabstruct_6kmercy_8sequence_Sequence *)__pyx_v_4test_seq->__pyx_vtab)->create(__pyx_v_4test_seq, __pyx_v_4test_num_bases, 0); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 156, __pyx_L1_error)
+  ((struct __pyx_vtabstruct_6kmercy_8sequence_Sequence *)__pyx_v_4test_seq->__pyx_vtab)->create(__pyx_v_4test_seq, __pyx_v_4test_num_bases, 0); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 153, __pyx_L1_error)
 
-  /* "test.pyx":157
+  /* "test.pyx":154
  * 
  * seq.create(num_bases)
  * seq.randomize()             # <<<<<<<<<<<<<<
  * seq.to_bytes(seq_bytes)
  * print("Sequence:", seq_bytes[:50] + b"...")
  */
-  ((struct __pyx_vtabstruct_6kmercy_8sequence_Sequence *)__pyx_v_4test_seq->__pyx_vtab)->randomize(__pyx_v_4test_seq); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 157, __pyx_L1_error)
+  ((struct __pyx_vtabstruct_6kmercy_8sequence_Sequence *)__pyx_v_4test_seq->__pyx_vtab)->randomize(__pyx_v_4test_seq); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 154, __pyx_L1_error)
 
-  /* "test.pyx":158
+  /* "test.pyx":155
  * seq.create(num_bases)
  * seq.randomize()
  * seq.to_bytes(seq_bytes)             # <<<<<<<<<<<<<<
@@ -4235,10 +4246,10 @@ if (!__Pyx_RefNanny) {
  */
   __pyx_t_2 = __pyx_v_4test_seq_bytes;
   __Pyx_INCREF(__pyx_t_2);
-  ((struct __pyx_vtabstruct_6kmercy_8sequence_Sequence *)__pyx_v_4test_seq->__pyx_vtab)->to_bytes(__pyx_v_4test_seq, ((PyObject*)__pyx_t_2)); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 158, __pyx_L1_error)
+  ((struct __pyx_vtabstruct_6kmercy_8sequence_Sequence *)__pyx_v_4test_seq->__pyx_vtab)->to_bytes(__pyx_v_4test_seq, ((PyObject*)__pyx_t_2)); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 155, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "test.pyx":159
+  /* "test.pyx":156
  * seq.randomize()
  * seq.to_bytes(seq_bytes)
  * print("Sequence:", seq_bytes[:50] + b"...")             # <<<<<<<<<<<<<<
@@ -4247,14 +4258,14 @@ if (!__Pyx_RefNanny) {
  */
   if (unlikely(__pyx_v_4test_seq_bytes == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-    __PYX_ERR(0, 159, __pyx_L1_error)
+    __PYX_ERR(0, 156, __pyx_L1_error)
   }
-  __pyx_t_2 = PySequence_GetSlice(__pyx_v_4test_seq_bytes, 0, 50); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 159, __pyx_L1_error)
+  __pyx_t_2 = PySequence_GetSlice(__pyx_v_4test_seq_bytes, 0, 50); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 156, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_1 = PyNumber_Add(__pyx_t_2, __pyx_kp_b__7); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 159, __pyx_L1_error)
+  __pyx_t_1 = PyNumber_Add(__pyx_t_2, __pyx_kp_b__7); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 156, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = PyTuple_New(2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 159, __pyx_L1_error)
+  __pyx_t_2 = PyTuple_New(2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 156, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_INCREF(__pyx_kp_u_Sequence);
   __Pyx_GIVEREF(__pyx_kp_u_Sequence);
@@ -4262,43 +4273,43 @@ if (!__Pyx_RefNanny) {
   __Pyx_GIVEREF(__pyx_t_1);
   PyTuple_SET_ITEM(__pyx_t_2, 1, __pyx_t_1);
   __pyx_t_1 = 0;
-  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_print, __pyx_t_2, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 159, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_print, __pyx_t_2, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 156, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "test.pyx":161
+  /* "test.pyx":158
  * print("Sequence:", seq_bytes[:50] + b"...")
  * 
  * start = time.time()             # <<<<<<<<<<<<<<
  * counts = count_kmers(seq_bytes, k_min, k_max)
  * end = time.time()
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_time); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 161, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_time); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 158, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_time); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 161, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_time); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 158, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = __Pyx_PyObject_CallNoArg(__pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 161, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_CallNoArg(__pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 158, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_start, __pyx_t_1) < 0) __PYX_ERR(0, 161, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_start, __pyx_t_1) < 0) __PYX_ERR(0, 158, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "test.pyx":162
+  /* "test.pyx":159
  * 
  * start = time.time()
  * counts = count_kmers(seq_bytes, k_min, k_max)             # <<<<<<<<<<<<<<
  * end = time.time()
  * print("Build Time (Python Dict):", end - start)
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_count_kmers); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 162, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_count_kmers); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 159, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyInt_FromSize_t(__pyx_v_4test_k_min); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 162, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyInt_FromSize_t(__pyx_v_4test_k_min); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 159, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_PyInt_FromSize_t(__pyx_v_4test_k_max); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 162, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyInt_FromSize_t(__pyx_v_4test_k_max); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 159, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = PyTuple_New(3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 162, __pyx_L1_error)
+  __pyx_t_4 = PyTuple_New(3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 159, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_INCREF(__pyx_v_4test_seq_bytes);
   __Pyx_GIVEREF(__pyx_v_4test_seq_bytes);
@@ -4309,50 +4320,50 @@ if (!__Pyx_RefNanny) {
   PyTuple_SET_ITEM(__pyx_t_4, 2, __pyx_t_3);
   __pyx_t_2 = 0;
   __pyx_t_3 = 0;
-  __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_t_4, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 162, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_t_4, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 159, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  if (!(likely(PyDict_CheckExact(__pyx_t_3))||((__pyx_t_3) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "dict", Py_TYPE(__pyx_t_3)->tp_name), 0))) __PYX_ERR(0, 162, __pyx_L1_error)
+  if (!(likely(PyDict_CheckExact(__pyx_t_3))||((__pyx_t_3) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "dict", Py_TYPE(__pyx_t_3)->tp_name), 0))) __PYX_ERR(0, 159, __pyx_L1_error)
   __Pyx_XGOTREF(__pyx_v_4test_counts);
   __Pyx_DECREF_SET(__pyx_v_4test_counts, ((PyObject*)__pyx_t_3));
   __Pyx_GIVEREF(__pyx_t_3);
   __pyx_t_3 = 0;
 
-  /* "test.pyx":163
+  /* "test.pyx":160
  * start = time.time()
  * counts = count_kmers(seq_bytes, k_min, k_max)
  * end = time.time()             # <<<<<<<<<<<<<<
  * print("Build Time (Python Dict):", end - start)
  * 
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_time); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 163, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_time); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 160, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_time); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 163, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_time); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 160, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = __Pyx_PyObject_CallNoArg(__pyx_t_4); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 163, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_CallNoArg(__pyx_t_4); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 160, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_end, __pyx_t_3) < 0) __PYX_ERR(0, 163, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_end, __pyx_t_3) < 0) __PYX_ERR(0, 160, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "test.pyx":164
+  /* "test.pyx":161
  * counts = count_kmers(seq_bytes, k_min, k_max)
  * end = time.time()
  * print("Build Time (Python Dict):", end - start)             # <<<<<<<<<<<<<<
  * 
  * start = time.time()
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_end); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 164, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_end); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 161, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_start); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 164, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_start); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 161, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_1 = PyNumber_Subtract(__pyx_t_3, __pyx_t_4); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 164, __pyx_L1_error)
+  __pyx_t_1 = PyNumber_Subtract(__pyx_t_3, __pyx_t_4); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 161, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __pyx_t_4 = PyTuple_New(2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 164, __pyx_L1_error)
+  __pyx_t_4 = PyTuple_New(2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 161, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_INCREF(__pyx_kp_u_Build_Time_Python_Dict);
   __Pyx_GIVEREF(__pyx_kp_u_Build_Time_Python_Dict);
@@ -4360,30 +4371,30 @@ if (!__Pyx_RefNanny) {
   __Pyx_GIVEREF(__pyx_t_1);
   PyTuple_SET_ITEM(__pyx_t_4, 1, __pyx_t_1);
   __pyx_t_1 = 0;
-  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_print, __pyx_t_4, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 164, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_print, __pyx_t_4, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 161, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "test.pyx":166
+  /* "test.pyx":163
  * print("Build Time (Python Dict):", end - start)
  * 
  * start = time.time()             # <<<<<<<<<<<<<<
  * trie.build(seq, k_min, k_max)
  * end = time.time()
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_time); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 166, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_time); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 163, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_time); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 166, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_time); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 163, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = __Pyx_PyObject_CallNoArg(__pyx_t_4); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 166, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_CallNoArg(__pyx_t_4); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 163, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_start, __pyx_t_1) < 0) __PYX_ERR(0, 166, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_start, __pyx_t_1) < 0) __PYX_ERR(0, 163, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "test.pyx":167
+  /* "test.pyx":164
  * 
  * start = time.time()
  * trie.build(seq, k_min, k_max)             # <<<<<<<<<<<<<<
@@ -4392,43 +4403,43 @@ if (!__Pyx_RefNanny) {
  */
   __pyx_t_1 = ((PyObject *)__pyx_v_4test_seq);
   __Pyx_INCREF(__pyx_t_1);
-  ((struct __pyx_vtabstruct_6kmercy_9kmer_trie_KmerTrie *)__pyx_v_4test_trie->__pyx_vtab)->build(__pyx_v_4test_trie, ((struct __pyx_obj_6kmercy_8sequence_Sequence *)__pyx_t_1), __pyx_v_4test_k_min, __pyx_v_4test_k_max); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 167, __pyx_L1_error)
+  ((struct __pyx_vtabstruct_6kmercy_9kmer_trie_KmerTrie *)__pyx_v_4test_trie->__pyx_vtab)->build(__pyx_v_4test_trie, ((struct __pyx_obj_6kmercy_8sequence_Sequence *)__pyx_t_1), __pyx_v_4test_k_min, __pyx_v_4test_k_max); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 164, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "test.pyx":168
+  /* "test.pyx":165
  * start = time.time()
  * trie.build(seq, k_min, k_max)
  * end = time.time()             # <<<<<<<<<<<<<<
  * print("Build Time (Cython Trie):", end - start)
  * 
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_time); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 168, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_time); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 165, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_time); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 168, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_time); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 165, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = __Pyx_PyObject_CallNoArg(__pyx_t_4); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 168, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_CallNoArg(__pyx_t_4); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 165, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_end, __pyx_t_1) < 0) __PYX_ERR(0, 168, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_end, __pyx_t_1) < 0) __PYX_ERR(0, 165, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "test.pyx":169
+  /* "test.pyx":166
  * trie.build(seq, k_min, k_max)
  * end = time.time()
  * print("Build Time (Cython Trie):", end - start)             # <<<<<<<<<<<<<<
  * 
  * for k in range(fixed_k_min, fixed_k_max + 1):
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_end); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 169, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_end); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 166, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_start); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 169, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_start); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 166, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_3 = PyNumber_Subtract(__pyx_t_1, __pyx_t_4); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 169, __pyx_L1_error)
+  __pyx_t_3 = PyNumber_Subtract(__pyx_t_1, __pyx_t_4); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 166, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __pyx_t_4 = PyTuple_New(2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 169, __pyx_L1_error)
+  __pyx_t_4 = PyTuple_New(2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 166, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_INCREF(__pyx_kp_u_Build_Time_Cython_Trie);
   __Pyx_GIVEREF(__pyx_kp_u_Build_Time_Cython_Trie);
@@ -4436,12 +4447,12 @@ if (!__Pyx_RefNanny) {
   __Pyx_GIVEREF(__pyx_t_3);
   PyTuple_SET_ITEM(__pyx_t_4, 1, __pyx_t_3);
   __pyx_t_3 = 0;
-  __pyx_t_3 = __Pyx_PyObject_Call(__pyx_builtin_print, __pyx_t_4, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 169, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_Call(__pyx_builtin_print, __pyx_t_4, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 166, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "test.pyx":171
+  /* "test.pyx":168
  * print("Build Time (Cython Trie):", end - start)
  * 
  * for k in range(fixed_k_min, fixed_k_max + 1):             # <<<<<<<<<<<<<<
@@ -4453,16 +4464,16 @@ if (!__Pyx_RefNanny) {
   for (__pyx_t_7 = __pyx_v_4test_fixed_k_min; __pyx_t_7 < __pyx_t_6; __pyx_t_7+=1) {
     __pyx_v_4test_k = __pyx_t_7;
 
-    /* "test.pyx":172
+    /* "test.pyx":169
  * 
  * for k in range(fixed_k_min, fixed_k_max + 1):
  *     run_fixed_size_kmer_test(counts, trie, k)             # <<<<<<<<<<<<<<
  * run_random_sub_kmer_test(counts, trie, k_min, k_max, num_runs)
  * 
  */
-    __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_run_fixed_size_kmer_test); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 172, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_run_fixed_size_kmer_test); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 169, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_1 = __Pyx_PyInt_FromSize_t(__pyx_v_4test_k); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 172, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyInt_FromSize_t(__pyx_v_4test_k); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 169, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __pyx_t_2 = NULL;
     __pyx_t_8 = 0;
@@ -4479,7 +4490,7 @@ if (!__Pyx_RefNanny) {
     #if CYTHON_FAST_PYCALL
     if (PyFunction_Check(__pyx_t_4)) {
       PyObject *__pyx_temp[4] = {__pyx_t_2, __pyx_v_4test_counts, ((PyObject *)__pyx_v_4test_trie), __pyx_t_1};
-      __pyx_t_3 = __Pyx_PyFunction_FastCall(__pyx_t_4, __pyx_temp+1-__pyx_t_8, 3+__pyx_t_8); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 172, __pyx_L1_error)
+      __pyx_t_3 = __Pyx_PyFunction_FastCall(__pyx_t_4, __pyx_temp+1-__pyx_t_8, 3+__pyx_t_8); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 169, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
       __Pyx_GOTREF(__pyx_t_3);
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
@@ -4488,14 +4499,14 @@ if (!__Pyx_RefNanny) {
     #if CYTHON_FAST_PYCCALL
     if (__Pyx_PyFastCFunction_Check(__pyx_t_4)) {
       PyObject *__pyx_temp[4] = {__pyx_t_2, __pyx_v_4test_counts, ((PyObject *)__pyx_v_4test_trie), __pyx_t_1};
-      __pyx_t_3 = __Pyx_PyCFunction_FastCall(__pyx_t_4, __pyx_temp+1-__pyx_t_8, 3+__pyx_t_8); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 172, __pyx_L1_error)
+      __pyx_t_3 = __Pyx_PyCFunction_FastCall(__pyx_t_4, __pyx_temp+1-__pyx_t_8, 3+__pyx_t_8); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 169, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
       __Pyx_GOTREF(__pyx_t_3);
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     } else
     #endif
     {
-      __pyx_t_9 = PyTuple_New(3+__pyx_t_8); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 172, __pyx_L1_error)
+      __pyx_t_9 = PyTuple_New(3+__pyx_t_8); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 169, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_9);
       if (__pyx_t_2) {
         __Pyx_GIVEREF(__pyx_t_2); PyTuple_SET_ITEM(__pyx_t_9, 0, __pyx_t_2); __pyx_t_2 = NULL;
@@ -4509,7 +4520,7 @@ if (!__Pyx_RefNanny) {
       __Pyx_GIVEREF(__pyx_t_1);
       PyTuple_SET_ITEM(__pyx_t_9, 2+__pyx_t_8, __pyx_t_1);
       __pyx_t_1 = 0;
-      __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_9, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 172, __pyx_L1_error)
+      __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_9, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 169, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
       __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
     }
@@ -4517,22 +4528,22 @@ if (!__Pyx_RefNanny) {
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   }
 
-  /* "test.pyx":173
+  /* "test.pyx":170
  * for k in range(fixed_k_min, fixed_k_max + 1):
  *     run_fixed_size_kmer_test(counts, trie, k)
  * run_random_sub_kmer_test(counts, trie, k_min, k_max, num_runs)             # <<<<<<<<<<<<<<
  * 
  * seq.delete()
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_run_random_sub_kmer_test); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 173, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_run_random_sub_kmer_test); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 170, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = __Pyx_PyInt_FromSize_t(__pyx_v_4test_k_min); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 173, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyInt_FromSize_t(__pyx_v_4test_k_min); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 170, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_9 = __Pyx_PyInt_FromSize_t(__pyx_v_4test_k_max); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 173, __pyx_L1_error)
+  __pyx_t_9 = __Pyx_PyInt_FromSize_t(__pyx_v_4test_k_max); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 170, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_9);
-  __pyx_t_1 = __Pyx_PyInt_FromSize_t(__pyx_v_4test_num_runs); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 173, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyInt_FromSize_t(__pyx_v_4test_num_runs); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 170, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = PyTuple_New(5); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 173, __pyx_L1_error)
+  __pyx_t_2 = PyTuple_New(5); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 170, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_INCREF(__pyx_v_4test_counts);
   __Pyx_GIVEREF(__pyx_v_4test_counts);
@@ -4549,22 +4560,22 @@ if (!__Pyx_RefNanny) {
   __pyx_t_4 = 0;
   __pyx_t_9 = 0;
   __pyx_t_1 = 0;
-  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_2, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 173, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_2, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 170, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "test.pyx":175
+  /* "test.pyx":172
  * run_random_sub_kmer_test(counts, trie, k_min, k_max, num_runs)
  * 
  * seq.delete()             # <<<<<<<<<<<<<<
  * seq = None
  * seq_bytes = None
  */
-  ((struct __pyx_vtabstruct_6kmercy_8sequence_Sequence *)__pyx_v_4test_seq->__pyx_vtab)->delete(__pyx_v_4test_seq, 0); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 175, __pyx_L1_error)
+  ((struct __pyx_vtabstruct_6kmercy_8sequence_Sequence *)__pyx_v_4test_seq->__pyx_vtab)->delete(__pyx_v_4test_seq, 0); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 172, __pyx_L1_error)
 
-  /* "test.pyx":176
+  /* "test.pyx":173
  * 
  * seq.delete()
  * seq = None             # <<<<<<<<<<<<<<
@@ -4576,7 +4587,7 @@ if (!__Pyx_RefNanny) {
   __Pyx_DECREF_SET(__pyx_v_4test_seq, ((struct __pyx_obj_6kmercy_8sequence_Sequence *)Py_None));
   __Pyx_GIVEREF(Py_None);
 
-  /* "test.pyx":177
+  /* "test.pyx":174
  * seq.delete()
  * seq = None
  * seq_bytes = None             # <<<<<<<<<<<<<<
@@ -4588,7 +4599,7 @@ if (!__Pyx_RefNanny) {
   __Pyx_DECREF_SET(__pyx_v_4test_seq_bytes, ((PyObject*)Py_None));
   __Pyx_GIVEREF(Py_None);
 
-  /* "test.pyx":178
+  /* "test.pyx":175
  * seq = None
  * seq_bytes = None
  * counts = None             # <<<<<<<<<<<<<<
@@ -4599,7 +4610,7 @@ if (!__Pyx_RefNanny) {
   __Pyx_DECREF_SET(__pyx_v_4test_counts, ((PyObject*)Py_None));
   __Pyx_GIVEREF(Py_None);
 
-  /* "test.pyx":179
+  /* "test.pyx":176
  * seq_bytes = None
  * counts = None
  * trie = None             # <<<<<<<<<<<<<<

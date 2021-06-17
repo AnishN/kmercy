@@ -61,7 +61,6 @@ def run_fixed_size_kmer_test(dict counts, KmerTrie trie, size_t k):
     cython_time = end - start
 
     match_count = list(slow_counts.values()) == list(fast_counts.values())
-
     print("Fixed Size Kmer Test (k = {0}): Python Dict = {1}, Cython Trie = {2}, Result = {3}".format(
         k, python_time, cython_time, match_count,
     ))
@@ -129,11 +128,9 @@ def run_random_sub_kmer_test(dict counts, KmerTrie trie, size_t k_min, size_t k_
     kmer_bytes = None
     sub_kmers = None
     sub_kmer_bytes = None
-
-    print("Random Sub Kmer Test # Runs:", num_runs)
-    print("Random Sub Kmer Test (Python Dict):", python_time)
-    print("Random Sub Kmer Test (Cython Trie):", cython_time)
-    print("Random Sub Kmer Test Result:", match_count)
+    print("Random Sub Kmer Test (# Runs = {0}): Python Dict = {1}, Cython Trie = {2}, Result = {3}".format(
+        num_runs, python_time, cython_time, match_count,
+    ))
 
 cdef:
     size_t num_bases = 130_000
