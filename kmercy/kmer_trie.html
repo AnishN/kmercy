@@ -367,7 +367,6 @@ body.cython { font-family: courier; font-size: 12; }
 <div class="cython"><pre class="cython line score-0" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">01</span>: <span class="k">cdef</span> <span class="k">class</span> <span class="nf">KmerTrie</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span></pre>
 <pre class='cython code score-0 '>struct __pyx_vtabstruct_6kmercy_9kmer_trie_KmerTrie {
   void (*build)(struct __pyx_obj_6kmercy_9kmer_trie_KmerTrie *, struct __pyx_obj_6kmercy_8sequence_Sequence *, size_t, size_t);
-  void (*build_k)(struct __pyx_obj_6kmercy_9kmer_trie_KmerTrie *, struct __pyx_obj_6kmercy_8sequence_Sequence *, size_t);
   size_t (*get_count)(struct __pyx_obj_6kmercy_9kmer_trie_KmerTrie *, struct __pyx_obj_6kmercy_8sequence_Sequence *);
 };
 static struct __pyx_vtabstruct_6kmercy_9kmer_trie_KmerTrie *__pyx_vtabptr_6kmercy_9kmer_trie_KmerTrie;
@@ -447,8 +446,15 @@ static void __pyx_pf_6kmercy_9kmer_trie_8KmerTrie_2__dealloc__(struct __pyx_obj_
   __pyx_v_self-&gt;nodes = ((struct __pyx_obj_6kmercy_11item_vector_ItemVector *)Py_None);
 </pre><pre class="cython line score-0">&#xA0;<span class="">09</span>: </pre>
 <pre class="cython line score-2" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">10</span>:     <span class="k">cdef</span> <span class="kt">void</span> <span class="nf">build</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">Sequence</span> <span class="n">seq</span><span class="p">,</span> <span class="n">size_t</span> <span class="n">k_min</span><span class="p">,</span> <span class="n">size_t</span> <span class="n">k_max</span><span class="p">)</span> <span class="k">except</span> <span class="o">*</span><span class="p">:</span></pre>
-<pre class='cython code score-2 '>static void __pyx_f_6kmercy_9kmer_trie_8KmerTrie_build(struct __pyx_obj_6kmercy_9kmer_trie_KmerTrie *__pyx_v_self, struct __pyx_obj_6kmercy_8sequence_Sequence *__pyx_v_seq, size_t __pyx_v_k_min, size_t __pyx_v_k_max) {
-  size_t __pyx_v_k;
+<pre class='cython code score-2 '>static void __pyx_f_6kmercy_9kmer_trie_8KmerTrie_build(struct __pyx_obj_6kmercy_9kmer_trie_KmerTrie *__pyx_v_self, struct __pyx_obj_6kmercy_8sequence_Sequence *__pyx_v_seq, CYTHON_UNUSED size_t __pyx_v_k_min, size_t __pyx_v_k_max) {
+  size_t __pyx_v_i;
+  size_t __pyx_v_j;
+  enum __pyx_t_6kmercy_8sequence_Base __pyx_v_base;
+  size_t __pyx_v_base_index;
+  size_t __pyx_v_node_index;
+  size_t __pyx_v_child_index;
+  struct __pyx_t_6kmercy_9kmer_trie_KmerTrieNodeC *__pyx_v_node_ptr;
+  struct __pyx_t_6kmercy_9kmer_trie_KmerTrieNodeC *__pyx_v_child_ptr;
   <span class='refnanny'>__Pyx_RefNannyDeclarations</span>
   <span class='refnanny'>__Pyx_RefNannySetupContext</span>("build", 0);
 /* … */
@@ -460,101 +466,59 @@ static void __pyx_pf_6kmercy_9kmer_trie_8KmerTrie_2__dealloc__(struct __pyx_obj_
   <span class='refnanny'>__Pyx_RefNannyFinishContext</span>();
 }
 </pre><pre class="cython line score-0">&#xA0;<span class="">11</span>:         <span class="k">cdef</span><span class="p">:</span></pre>
-<pre class="cython line score-0">&#xA0;<span class="">12</span>:             <span class="n">size_t</span> <span class="n">k</span></pre>
+<pre class="cython line score-0">&#xA0;<span class="">12</span>:             <span class="n">size_t</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span></pre>
 <pre class="cython line score-0">&#xA0;<span class="">13</span>:             <span class="n">Base</span> <span class="n">base</span></pre>
 <pre class="cython line score-0">&#xA0;<span class="">14</span>:             <span class="n">size_t</span> <span class="n">base_index</span></pre>
 <pre class="cython line score-0">&#xA0;<span class="">15</span>:             <span class="n">size_t</span> <span class="n">node_index</span></pre>
 <pre class="cython line score-0">&#xA0;<span class="">16</span>:             <span class="n">size_t</span> <span class="n">child_index</span></pre>
 <pre class="cython line score-0">&#xA0;<span class="">17</span>:             <span class="n">KmerTrieNodeC</span> <span class="o">*</span><span class="n">node_ptr</span></pre>
-<pre class="cython line score-0">&#xA0;<span class="">18</span>: </pre>
-<pre class="cython line score-0" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">19</span>:         <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">k_min</span><span class="p">,</span> <span class="n">k_max</span> <span class="o">+</span> <span class="mf">1</span><span class="p">):</span></pre>
-<pre class='cython code score-0 '>  __pyx_t_1 = (__pyx_v_k_max + 1);
-  __pyx_t_2 = __pyx_t_1;
-  for (__pyx_t_3 = __pyx_v_k_min; __pyx_t_3 &lt; __pyx_t_2; __pyx_t_3+=1) {
-    __pyx_v_k = __pyx_t_3;
-</pre><pre class="cython line score-0" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">20</span>:             <span class="bp">self</span><span class="o">.</span><span class="n">build_k</span><span class="p">(</span><span class="n">seq</span><span class="p">,</span> <span class="n">k</span><span class="p">)</span></pre>
-<pre class='cython code score-0 '>    ((struct __pyx_vtabstruct_6kmercy_9kmer_trie_KmerTrie *)__pyx_v_self-&gt;__pyx_vtab)-&gt;build_k(__pyx_v_self, __pyx_v_seq, __pyx_v_k);<span class='error_goto'> if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 20, __pyx_L1_error)</span>
-  }
-</pre><pre class="cython line score-0">&#xA0;<span class="">21</span>: </pre>
-<pre class="cython line score-2" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">22</span>:     <span class="k">cdef</span> <span class="kt">void</span> <span class="nf">build_k</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">Sequence</span> <span class="n">seq</span><span class="p">,</span> <span class="n">size_t</span> <span class="n">k</span><span class="p">)</span> <span class="k">except</span> <span class="o">*</span><span class="p">:</span></pre>
-<pre class='cython code score-2 '>static void __pyx_f_6kmercy_9kmer_trie_8KmerTrie_build_k(struct __pyx_obj_6kmercy_9kmer_trie_KmerTrie *__pyx_v_self, struct __pyx_obj_6kmercy_8sequence_Sequence *__pyx_v_seq, size_t __pyx_v_k) {
-  size_t __pyx_v_i;
-  size_t __pyx_v_j;
-  enum __pyx_t_6kmercy_8sequence_Base __pyx_v_base;
-  size_t __pyx_v_base_index;
-  size_t __pyx_v_node_index;
-  size_t __pyx_v_child_index;
-  struct __pyx_t_6kmercy_9kmer_trie_KmerTrieNodeC *__pyx_v_node_ptr;
-  struct __pyx_t_6kmercy_9kmer_trie_KmerTrieNodeC *__pyx_v_child_ptr;
-  <span class='refnanny'>__Pyx_RefNannyDeclarations</span>
-  <span class='refnanny'>__Pyx_RefNannySetupContext</span>("build_k", 0);
-/* … */
-  /* function exit code */
-  goto __pyx_L0;
-  __pyx_L1_error:;
-  <span class='pyx_c_api'>__Pyx_AddTraceback</span>("kmercy.kmer_trie.KmerTrie.build_k", __pyx_clineno, __pyx_lineno, __pyx_filename);
-  __pyx_L0:;
-  <span class='refnanny'>__Pyx_RefNannyFinishContext</span>();
-}
-</pre><pre class="cython line score-0">&#xA0;<span class="">23</span>:         <span class="k">cdef</span><span class="p">:</span></pre>
-<pre class="cython line score-0">&#xA0;<span class="">24</span>:             <span class="n">size_t</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span></pre>
-<pre class="cython line score-0">&#xA0;<span class="">25</span>:             <span class="n">Base</span> <span class="n">base</span></pre>
-<pre class="cython line score-0">&#xA0;<span class="">26</span>:             <span class="n">size_t</span> <span class="n">base_index</span></pre>
-<pre class="cython line score-0">&#xA0;<span class="">27</span>:             <span class="n">size_t</span> <span class="n">node_index</span></pre>
-<pre class="cython line score-0">&#xA0;<span class="">28</span>:             <span class="n">size_t</span> <span class="n">child_index</span></pre>
-<pre class="cython line score-0">&#xA0;<span class="">29</span>:             <span class="n">KmerTrieNodeC</span> <span class="o">*</span><span class="n">node_ptr</span></pre>
-<pre class="cython line score-0">&#xA0;<span class="">30</span>:             <span class="n">KmerTrieNodeC</span> <span class="o">*</span><span class="n">child_ptr</span></pre>
-<pre class="cython line score-0">&#xA0;<span class="">31</span>: </pre>
-<pre class="cython line score-0" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">32</span>:         <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">seq</span><span class="o">.</span><span class="n">num_bases</span> <span class="o">-</span> <span class="n">k</span> <span class="o">+</span> <span class="mf">1</span><span class="p">):</span></pre>
-<pre class='cython code score-0 '>  __pyx_t_1 = ((__pyx_v_seq-&gt;num_bases - __pyx_v_k) + 1);
+<pre class="cython line score-0">&#xA0;<span class="">18</span>:             <span class="n">KmerTrieNodeC</span> <span class="o">*</span><span class="n">child_ptr</span></pre>
+<pre class="cython line score-0">&#xA0;<span class="">19</span>: </pre>
+<pre class="cython line score-0" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">20</span>:         <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">seq</span><span class="o">.</span><span class="n">num_bases</span> <span class="o">-</span> <span class="n">k_max</span> <span class="o">+</span> <span class="mf">1</span><span class="p">):</span></pre>
+<pre class='cython code score-0 '>  __pyx_t_1 = ((__pyx_v_seq-&gt;num_bases - __pyx_v_k_max) + 1);
   __pyx_t_2 = __pyx_t_1;
   for (__pyx_t_3 = 0; __pyx_t_3 &lt; __pyx_t_2; __pyx_t_3+=1) {
     __pyx_v_i = __pyx_t_3;
-</pre><pre class="cython line score-0" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">33</span>:             <span class="n">node_index</span> <span class="o">=</span> <span class="mf">0</span></pre>
+</pre><pre class="cython line score-0" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">21</span>:             <span class="n">node_index</span> <span class="o">=</span> <span class="mf">0</span></pre>
 <pre class='cython code score-0 '>    __pyx_v_node_index = 0;
-</pre><pre class="cython line score-0" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">34</span>:             <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">k</span><span class="p">):</span></pre>
-<pre class='cython code score-0 '>    __pyx_t_4 = __pyx_v_k;
+</pre><pre class="cython line score-0" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">22</span>:             <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">k_max</span><span class="p">):</span></pre>
+<pre class='cython code score-0 '>    __pyx_t_4 = __pyx_v_k_max;
     __pyx_t_5 = __pyx_t_4;
     for (__pyx_t_6 = 0; __pyx_t_6 &lt; __pyx_t_5; __pyx_t_6+=1) {
       __pyx_v_j = __pyx_t_6;
-</pre><pre class="cython line score-0" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">35</span>:                 <span class="n">base</span> <span class="o">=</span> <span class="n">seq</span><span class="o">.</span><span class="n">get_base</span><span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="n">j</span><span class="p">)</span></pre>
+</pre><pre class="cython line score-0" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">23</span>:                 <span class="n">base</span> <span class="o">=</span> <span class="n">seq</span><span class="o">.</span><span class="n">get_base</span><span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="n">j</span><span class="p">)</span></pre>
 <pre class='cython code score-0 '>      __pyx_v_base = ((struct __pyx_vtabstruct_6kmercy_8sequence_Sequence *)__pyx_v_seq-&gt;__pyx_vtab)-&gt;get_base(__pyx_v_seq, (__pyx_v_i + __pyx_v_j));
-</pre><pre class="cython line score-0" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">36</span>:                 <span class="n">base_index</span> <span class="o">=</span> <span class="o">&lt;</span><span class="n">size_t</span><span class="o">&gt;</span><span class="n">base</span></pre>
+</pre><pre class="cython line score-0" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">24</span>:                 <span class="n">base_index</span> <span class="o">=</span> <span class="o">&lt;</span><span class="n">size_t</span><span class="o">&gt;</span><span class="n">base</span></pre>
 <pre class='cython code score-0 '>      __pyx_v_base_index = ((size_t)__pyx_v_base);
-</pre><pre class="cython line score-0" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">37</span>:                 <span class="n">node_ptr</span> <span class="o">=</span> <span class="o">&lt;</span><span class="n">KmerTrieNodeC</span> <span class="o">*&gt;</span><span class="bp">self</span><span class="o">.</span><span class="n">nodes</span><span class="o">.</span><span class="n">c_get_ptr</span><span class="p">(</span><span class="n">node_index</span><span class="p">)</span></pre>
-<pre class='cython code score-0 '>      __pyx_t_7 = ((struct __pyx_vtabstruct_6kmercy_11item_vector_ItemVector *)__pyx_v_self-&gt;nodes-&gt;__pyx_vtab)-&gt;c_get_ptr(__pyx_v_self-&gt;nodes, __pyx_v_node_index);<span class='error_goto'> if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 37, __pyx_L1_error)</span>
+</pre><pre class="cython line score-0" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">25</span>:                 <span class="n">node_ptr</span> <span class="o">=</span> <span class="o">&lt;</span><span class="n">KmerTrieNodeC</span> <span class="o">*&gt;</span><span class="bp">self</span><span class="o">.</span><span class="n">nodes</span><span class="o">.</span><span class="n">c_get_ptr</span><span class="p">(</span><span class="n">node_index</span><span class="p">)</span></pre>
+<pre class='cython code score-0 '>      __pyx_t_7 = ((struct __pyx_vtabstruct_6kmercy_11item_vector_ItemVector *)__pyx_v_self-&gt;nodes-&gt;__pyx_vtab)-&gt;c_get_ptr(__pyx_v_self-&gt;nodes, __pyx_v_node_index);<span class='error_goto'> if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 25, __pyx_L1_error)</span>
       __pyx_v_node_ptr = ((struct __pyx_t_6kmercy_9kmer_trie_KmerTrieNodeC *)__pyx_t_7);
-</pre><pre class="cython line score-0" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">38</span>:                 <span class="n">child_index</span> <span class="o">=</span> <span class="n">node_ptr</span><span class="o">.</span><span class="n">children</span><span class="p">[</span><span class="n">base_index</span><span class="p">]</span></pre>
+</pre><pre class="cython line score-0" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">26</span>:                 <span class="n">child_index</span> <span class="o">=</span> <span class="n">node_ptr</span><span class="o">.</span><span class="n">children</span><span class="p">[</span><span class="n">base_index</span><span class="p">]</span></pre>
 <pre class='cython code score-0 '>      __pyx_v_child_index = (__pyx_v_node_ptr-&gt;children[__pyx_v_base_index]);
-</pre><pre class="cython line score-0" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">39</span>:                 <span class="k">if</span> <span class="n">child_index</span> <span class="o">==</span> <span class="mf">0</span><span class="p">:</span></pre>
+</pre><pre class="cython line score-0" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">27</span>:                 <span class="k">if</span> <span class="n">child_index</span> <span class="o">==</span> <span class="mf">0</span><span class="p">:</span></pre>
 <pre class='cython code score-0 '>      __pyx_t_8 = ((__pyx_v_child_index == 0) != 0);
       if (__pyx_t_8) {
 /* … */
       }
-</pre><pre class="cython line score-0" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">40</span>:                     <span class="n">node_ptr</span><span class="o">.</span><span class="n">children</span><span class="p">[</span><span class="n">base_index</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">nodes</span><span class="o">.</span><span class="n">num_items</span></pre>
+</pre><pre class="cython line score-0" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">28</span>:                     <span class="n">node_ptr</span><span class="o">.</span><span class="n">children</span><span class="p">[</span><span class="n">base_index</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">nodes</span><span class="o">.</span><span class="n">num_items</span></pre>
 <pre class='cython code score-0 '>        __pyx_t_9 = __pyx_v_self-&gt;nodes-&gt;num_items;
         (__pyx_v_node_ptr-&gt;children[__pyx_v_base_index]) = __pyx_t_9;
-</pre><pre class="cython line score-0" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">41</span>:                     <span class="n">child_index</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">nodes</span><span class="o">.</span><span class="n">num_items</span></pre>
+</pre><pre class="cython line score-0" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">29</span>:                     <span class="n">child_index</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">nodes</span><span class="o">.</span><span class="n">num_items</span></pre>
 <pre class='cython code score-0 '>        __pyx_t_9 = __pyx_v_self-&gt;nodes-&gt;num_items;
         __pyx_v_child_index = __pyx_t_9;
-</pre><pre class="cython line score-0" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">42</span>:                     <span class="bp">self</span><span class="o">.</span><span class="n">nodes</span><span class="o">.</span><span class="n">c_push_empty</span><span class="p">()</span></pre>
-<pre class='cython code score-0 '>        ((struct __pyx_vtabstruct_6kmercy_11item_vector_ItemVector *)__pyx_v_self-&gt;nodes-&gt;__pyx_vtab)-&gt;c_push_empty(__pyx_v_self-&gt;nodes);<span class='error_goto'> if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 42, __pyx_L1_error)</span>
-</pre><pre class="cython line score-0" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">43</span>:                 <span class="n">child_ptr</span> <span class="o">=</span> <span class="o">&lt;</span><span class="n">KmerTrieNodeC</span> <span class="o">*&gt;</span><span class="bp">self</span><span class="o">.</span><span class="n">nodes</span><span class="o">.</span><span class="n">c_get_ptr</span><span class="p">(</span><span class="n">child_index</span><span class="p">)</span></pre>
-<pre class='cython code score-0 '>      __pyx_t_7 = ((struct __pyx_vtabstruct_6kmercy_11item_vector_ItemVector *)__pyx_v_self-&gt;nodes-&gt;__pyx_vtab)-&gt;c_get_ptr(__pyx_v_self-&gt;nodes, __pyx_v_child_index);<span class='error_goto'> if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 43, __pyx_L1_error)</span>
+</pre><pre class="cython line score-0" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">30</span>:                     <span class="bp">self</span><span class="o">.</span><span class="n">nodes</span><span class="o">.</span><span class="n">c_push_empty</span><span class="p">()</span></pre>
+<pre class='cython code score-0 '>        ((struct __pyx_vtabstruct_6kmercy_11item_vector_ItemVector *)__pyx_v_self-&gt;nodes-&gt;__pyx_vtab)-&gt;c_push_empty(__pyx_v_self-&gt;nodes);<span class='error_goto'> if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 30, __pyx_L1_error)</span>
+</pre><pre class="cython line score-0" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">31</span>:                 <span class="n">child_ptr</span> <span class="o">=</span> <span class="o">&lt;</span><span class="n">KmerTrieNodeC</span> <span class="o">*&gt;</span><span class="bp">self</span><span class="o">.</span><span class="n">nodes</span><span class="o">.</span><span class="n">c_get_ptr</span><span class="p">(</span><span class="n">child_index</span><span class="p">)</span></pre>
+<pre class='cython code score-0 '>      __pyx_t_7 = ((struct __pyx_vtabstruct_6kmercy_11item_vector_ItemVector *)__pyx_v_self-&gt;nodes-&gt;__pyx_vtab)-&gt;c_get_ptr(__pyx_v_self-&gt;nodes, __pyx_v_child_index);<span class='error_goto'> if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 31, __pyx_L1_error)</span>
       __pyx_v_child_ptr = ((struct __pyx_t_6kmercy_9kmer_trie_KmerTrieNodeC *)__pyx_t_7);
-</pre><pre class="cython line score-0" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">44</span>:                 <span class="k">if</span> <span class="n">j</span> <span class="o">==</span> <span class="n">k</span> <span class="o">-</span> <span class="mf">1</span><span class="p">:</span></pre>
-<pre class='cython code score-0 '>      __pyx_t_8 = ((__pyx_v_j == (__pyx_v_k - 1)) != 0);
-      if (__pyx_t_8) {
-/* … */
-      }
-</pre><pre class="cython line score-0" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">45</span>:                     <span class="n">child_ptr</span><span class="o">.</span><span class="n">count</span> <span class="o">+=</span> <span class="mf">1</span></pre>
-<pre class='cython code score-0 '>        __pyx_v_child_ptr-&gt;count = (__pyx_v_child_ptr-&gt;count + 1);
-</pre><pre class="cython line score-0" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">46</span>:                 <span class="n">node_index</span> <span class="o">=</span> <span class="n">child_index</span></pre>
+</pre><pre class="cython line score-0" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">32</span>:                 <span class="n">child_ptr</span><span class="o">.</span><span class="n">count</span> <span class="o">+=</span> <span class="mf">1</span></pre>
+<pre class='cython code score-0 '>      __pyx_v_child_ptr-&gt;count = (__pyx_v_child_ptr-&gt;count + 1);
+</pre><pre class="cython line score-0" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">33</span>:                 <span class="n">node_index</span> <span class="o">=</span> <span class="n">child_index</span></pre>
 <pre class='cython code score-0 '>      __pyx_v_node_index = __pyx_v_child_index;
     }
   }
-</pre><pre class="cython line score-0">&#xA0;<span class="">47</span>: </pre>
-<pre class="cython line score-2" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">48</span>:     <span class="k">cdef</span> <span class="kt">size_t</span> <span class="nf">get_count</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">Sequence</span> <span class="n">kmer</span><span class="p">)</span> <span class="k">except</span> <span class="o">*</span><span class="p">:</span></pre>
+</pre><pre class="cython line score-0">&#xA0;<span class="">34</span>: </pre>
+<pre class="cython line score-2" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">35</span>:     <span class="k">cdef</span> <span class="kt">size_t</span> <span class="nf">get_count</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">Sequence</span> <span class="n">kmer</span><span class="p">)</span> <span class="k">except</span> <span class="o">*</span><span class="p">:</span></pre>
 <pre class='cython code score-2 '>static size_t __pyx_f_6kmercy_9kmer_trie_8KmerTrie_get_count(struct __pyx_obj_6kmercy_9kmer_trie_KmerTrie *__pyx_v_self, struct __pyx_obj_6kmercy_8sequence_Sequence *__pyx_v_kmer) {
   size_t __pyx_v_i;
   enum __pyx_t_6kmercy_8sequence_Base __pyx_v_base;
@@ -573,33 +537,49 @@ static void __pyx_pf_6kmercy_9kmer_trie_8KmerTrie_2__dealloc__(struct __pyx_obj_
   <span class='refnanny'>__Pyx_RefNannyFinishContext</span>();
   return __pyx_r;
 }
-</pre><pre class="cython line score-0">&#xA0;<span class="">49</span>:         <span class="k">cdef</span><span class="p">:</span></pre>
-<pre class="cython line score-0">&#xA0;<span class="">50</span>:             <span class="n">size_t</span> <span class="n">i</span></pre>
-<pre class="cython line score-0">&#xA0;<span class="">51</span>:             <span class="n">Base</span> <span class="n">base</span></pre>
-<pre class="cython line score-0">&#xA0;<span class="">52</span>:             <span class="n">size_t</span> <span class="n">base_index</span></pre>
-<pre class="cython line score-0" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">53</span>:             <span class="n">size_t</span> <span class="n">node_index</span> <span class="o">=</span> <span class="mf">0</span></pre>
+</pre><pre class="cython line score-0">&#xA0;<span class="">36</span>:         <span class="k">cdef</span><span class="p">:</span></pre>
+<pre class="cython line score-0">&#xA0;<span class="">37</span>:             <span class="n">size_t</span> <span class="n">i</span></pre>
+<pre class="cython line score-0">&#xA0;<span class="">38</span>:             <span class="n">Base</span> <span class="n">base</span></pre>
+<pre class="cython line score-0">&#xA0;<span class="">39</span>:             <span class="n">size_t</span> <span class="n">base_index</span></pre>
+<pre class="cython line score-0" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">40</span>:             <span class="n">size_t</span> <span class="n">node_index</span> <span class="o">=</span> <span class="mf">0</span></pre>
 <pre class='cython code score-0 '>  __pyx_v_node_index = 0;
-</pre><pre class="cython line score-0">&#xA0;<span class="">54</span>:             <span class="n">KmerTrieNodeC</span> <span class="o">*</span><span class="n">node_ptr</span></pre>
-<pre class="cython line score-0">&#xA0;<span class="">55</span>: </pre>
-<pre class="cython line score-0" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">56</span>:         <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">kmer</span><span class="o">.</span><span class="n">num_bases</span><span class="p">):</span></pre>
+</pre><pre class="cython line score-0">&#xA0;<span class="">41</span>:             <span class="n">KmerTrieNodeC</span> <span class="o">*</span><span class="n">node_ptr</span></pre>
+<pre class="cython line score-0">&#xA0;<span class="">42</span>: </pre>
+<pre class="cython line score-0" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">43</span>:         <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">kmer</span><span class="o">.</span><span class="n">num_bases</span><span class="p">):</span></pre>
 <pre class='cython code score-0 '>  __pyx_t_1 = __pyx_v_kmer-&gt;num_bases;
   __pyx_t_2 = __pyx_t_1;
   for (__pyx_t_3 = 0; __pyx_t_3 &lt; __pyx_t_2; __pyx_t_3+=1) {
     __pyx_v_i = __pyx_t_3;
-</pre><pre class="cython line score-0" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">57</span>:             <span class="n">base</span> <span class="o">=</span> <span class="n">kmer</span><span class="o">.</span><span class="n">get_base</span><span class="p">(</span><span class="n">i</span><span class="p">)</span></pre>
+</pre><pre class="cython line score-0" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">44</span>:             <span class="n">base</span> <span class="o">=</span> <span class="n">kmer</span><span class="o">.</span><span class="n">get_base</span><span class="p">(</span><span class="n">i</span><span class="p">)</span></pre>
 <pre class='cython code score-0 '>    __pyx_v_base = ((struct __pyx_vtabstruct_6kmercy_8sequence_Sequence *)__pyx_v_kmer-&gt;__pyx_vtab)-&gt;get_base(__pyx_v_kmer, __pyx_v_i);
-</pre><pre class="cython line score-0" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">58</span>:             <span class="n">base_index</span> <span class="o">=</span> <span class="o">&lt;</span><span class="n">size_t</span><span class="o">&gt;</span><span class="n">base</span></pre>
+</pre><pre class="cython line score-0" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">45</span>:             <span class="n">base_index</span> <span class="o">=</span> <span class="o">&lt;</span><span class="n">size_t</span><span class="o">&gt;</span><span class="n">base</span></pre>
 <pre class='cython code score-0 '>    __pyx_v_base_index = ((size_t)__pyx_v_base);
-</pre><pre class="cython line score-0" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">59</span>:             <span class="n">node_ptr</span> <span class="o">=</span> <span class="o">&lt;</span><span class="n">KmerTrieNodeC</span> <span class="o">*&gt;</span><span class="bp">self</span><span class="o">.</span><span class="n">nodes</span><span class="o">.</span><span class="n">c_get_ptr</span><span class="p">(</span><span class="n">node_index</span><span class="p">)</span></pre>
-<pre class='cython code score-0 '>    __pyx_t_4 = ((struct __pyx_vtabstruct_6kmercy_11item_vector_ItemVector *)__pyx_v_self-&gt;nodes-&gt;__pyx_vtab)-&gt;c_get_ptr(__pyx_v_self-&gt;nodes, __pyx_v_node_index);<span class='error_goto'> if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 59, __pyx_L1_error)</span>
+</pre><pre class="cython line score-0" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">46</span>:             <span class="n">node_ptr</span> <span class="o">=</span> <span class="o">&lt;</span><span class="n">KmerTrieNodeC</span> <span class="o">*&gt;</span><span class="bp">self</span><span class="o">.</span><span class="n">nodes</span><span class="o">.</span><span class="n">c_get_ptr</span><span class="p">(</span><span class="n">node_index</span><span class="p">)</span></pre>
+<pre class='cython code score-0 '>    __pyx_t_4 = ((struct __pyx_vtabstruct_6kmercy_11item_vector_ItemVector *)__pyx_v_self-&gt;nodes-&gt;__pyx_vtab)-&gt;c_get_ptr(__pyx_v_self-&gt;nodes, __pyx_v_node_index);<span class='error_goto'> if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 46, __pyx_L1_error)</span>
     __pyx_v_node_ptr = ((struct __pyx_t_6kmercy_9kmer_trie_KmerTrieNodeC *)__pyx_t_4);
-</pre><pre class="cython line score-0" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">60</span>:             <span class="n">node_index</span> <span class="o">=</span> <span class="n">node_ptr</span><span class="o">.</span><span class="n">children</span><span class="p">[</span><span class="n">base_index</span><span class="p">]</span></pre>
+</pre><pre class="cython line score-0" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">47</span>:             <span class="n">node_index</span> <span class="o">=</span> <span class="n">node_ptr</span><span class="o">.</span><span class="n">children</span><span class="p">[</span><span class="n">base_index</span><span class="p">]</span></pre>
 <pre class='cython code score-0 '>    __pyx_v_node_index = (__pyx_v_node_ptr-&gt;children[__pyx_v_base_index]);
+</pre><pre class="cython line score-0" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">48</span>:             <span class="k">if</span> <span class="n">i</span> <span class="o">!=</span> <span class="mf">0</span> <span class="ow">and</span> <span class="n">node_ptr</span><span class="o">.</span><span class="n">count</span> <span class="o">==</span> <span class="mf">0</span><span class="p">:</span></pre>
+<pre class='cython code score-0 '>    __pyx_t_6 = ((__pyx_v_i != 0) != 0);
+    if (__pyx_t_6) {
+    } else {
+      __pyx_t_5 = __pyx_t_6;
+      goto __pyx_L6_bool_binop_done;
+    }
+    __pyx_t_6 = ((__pyx_v_node_ptr-&gt;count == 0) != 0);
+    __pyx_t_5 = __pyx_t_6;
+    __pyx_L6_bool_binop_done:;
+    if (__pyx_t_5) {
+/* … */
+    }
   }
-</pre><pre class="cython line score-0" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">61</span>:         <span class="n">node_ptr</span> <span class="o">=</span> <span class="o">&lt;</span><span class="n">KmerTrieNodeC</span> <span class="o">*&gt;</span><span class="bp">self</span><span class="o">.</span><span class="n">nodes</span><span class="o">.</span><span class="n">c_get_ptr</span><span class="p">(</span><span class="n">node_index</span><span class="p">)</span></pre>
-<pre class='cython code score-0 '>  __pyx_t_4 = ((struct __pyx_vtabstruct_6kmercy_11item_vector_ItemVector *)__pyx_v_self-&gt;nodes-&gt;__pyx_vtab)-&gt;c_get_ptr(__pyx_v_self-&gt;nodes, __pyx_v_node_index);<span class='error_goto'> if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 61, __pyx_L1_error)</span>
+</pre><pre class="cython line score-0" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">49</span>:                 <span class="k">return</span> <span class="mf">0</span></pre>
+<pre class='cython code score-0 '>      __pyx_r = 0;
+      goto __pyx_L0;
+</pre><pre class="cython line score-0" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">50</span>:         <span class="n">node_ptr</span> <span class="o">=</span> <span class="o">&lt;</span><span class="n">KmerTrieNodeC</span> <span class="o">*&gt;</span><span class="bp">self</span><span class="o">.</span><span class="n">nodes</span><span class="o">.</span><span class="n">c_get_ptr</span><span class="p">(</span><span class="n">node_index</span><span class="p">)</span></pre>
+<pre class='cython code score-0 '>  __pyx_t_4 = ((struct __pyx_vtabstruct_6kmercy_11item_vector_ItemVector *)__pyx_v_self-&gt;nodes-&gt;__pyx_vtab)-&gt;c_get_ptr(__pyx_v_self-&gt;nodes, __pyx_v_node_index);<span class='error_goto'> if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 50, __pyx_L1_error)</span>
   __pyx_v_node_ptr = ((struct __pyx_t_6kmercy_9kmer_trie_KmerTrieNodeC *)__pyx_t_4);
-</pre><pre class="cython line score-0" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">62</span>:         <span class="k">return</span> <span class="n">node_ptr</span><span class="o">.</span><span class="n">count</span></pre>
+</pre><pre class="cython line score-0" onclick="(function(s){s.display=s.display==='block'?'none':'block'})(this.nextElementSibling.style)">+<span class="">51</span>:         <span class="k">return</span> <span class="n">node_ptr</span><span class="o">.</span><span class="n">count</span></pre>
 <pre class='cython code score-0 '>  __pyx_r = __pyx_v_node_ptr-&gt;count;
   goto __pyx_L0;
 </pre></div></body></html>

@@ -995,7 +995,6 @@ static struct __pyx_vtabstruct_6kmercy_11item_vector_ItemVector *__pyx_vtabptr_6
 
 struct __pyx_vtabstruct_6kmercy_9kmer_trie_KmerTrie {
   void (*build)(struct __pyx_obj_6kmercy_9kmer_trie_KmerTrie *, struct __pyx_obj_6kmercy_8sequence_Sequence *, size_t, size_t);
-  void (*build_k)(struct __pyx_obj_6kmercy_9kmer_trie_KmerTrie *, struct __pyx_obj_6kmercy_8sequence_Sequence *, size_t);
   size_t (*get_count)(struct __pyx_obj_6kmercy_9kmer_trie_KmerTrie *, struct __pyx_obj_6kmercy_8sequence_Sequence *);
 };
 static struct __pyx_vtabstruct_6kmercy_9kmer_trie_KmerTrie *__pyx_vtabptr_6kmercy_9kmer_trie_KmerTrie;
@@ -1361,8 +1360,7 @@ static int __Pyx_check_binary_version(void);
 /* InitStrings.proto */
 static int __Pyx_InitStrings(__Pyx_StringTabEntry *t);
 
-static void __pyx_f_6kmercy_9kmer_trie_8KmerTrie_build(struct __pyx_obj_6kmercy_9kmer_trie_KmerTrie *__pyx_v_self, struct __pyx_obj_6kmercy_8sequence_Sequence *__pyx_v_seq, size_t __pyx_v_k_min, size_t __pyx_v_k_max); /* proto*/
-static void __pyx_f_6kmercy_9kmer_trie_8KmerTrie_build_k(struct __pyx_obj_6kmercy_9kmer_trie_KmerTrie *__pyx_v_self, struct __pyx_obj_6kmercy_8sequence_Sequence *__pyx_v_seq, size_t __pyx_v_k); /* proto*/
+static void __pyx_f_6kmercy_9kmer_trie_8KmerTrie_build(struct __pyx_obj_6kmercy_9kmer_trie_KmerTrie *__pyx_v_self, struct __pyx_obj_6kmercy_8sequence_Sequence *__pyx_v_seq, CYTHON_UNUSED size_t __pyx_v_k_min, size_t __pyx_v_k_max); /* proto*/
 static size_t __pyx_f_6kmercy_9kmer_trie_8KmerTrie_get_count(struct __pyx_obj_6kmercy_9kmer_trie_KmerTrie *__pyx_v_self, struct __pyx_obj_6kmercy_8sequence_Sequence *__pyx_v_kmer); /* proto*/
 
 /* Module declarations from 'libc.stdint' */
@@ -1578,67 +1576,10 @@ static void __pyx_pf_6kmercy_9kmer_trie_8KmerTrie_2__dealloc__(struct __pyx_obj_
  * 
  *     cdef void build(self, Sequence seq, size_t k_min, size_t k_max) except *:             # <<<<<<<<<<<<<<
  *         cdef:
- *             size_t k
- */
-
-static void __pyx_f_6kmercy_9kmer_trie_8KmerTrie_build(struct __pyx_obj_6kmercy_9kmer_trie_KmerTrie *__pyx_v_self, struct __pyx_obj_6kmercy_8sequence_Sequence *__pyx_v_seq, size_t __pyx_v_k_min, size_t __pyx_v_k_max) {
-  size_t __pyx_v_k;
-  __Pyx_RefNannyDeclarations
-  size_t __pyx_t_1;
-  size_t __pyx_t_2;
-  size_t __pyx_t_3;
-  int __pyx_lineno = 0;
-  const char *__pyx_filename = NULL;
-  int __pyx_clineno = 0;
-  __Pyx_RefNannySetupContext("build", 0);
-
-  /* "kmercy/kmer_trie.pyx":19
- *             KmerTrieNodeC *node_ptr
- * 
- *         for k in range(k_min, k_max + 1):             # <<<<<<<<<<<<<<
- *             self.build_k(seq, k)
- * 
- */
-  __pyx_t_1 = (__pyx_v_k_max + 1);
-  __pyx_t_2 = __pyx_t_1;
-  for (__pyx_t_3 = __pyx_v_k_min; __pyx_t_3 < __pyx_t_2; __pyx_t_3+=1) {
-    __pyx_v_k = __pyx_t_3;
-
-    /* "kmercy/kmer_trie.pyx":20
- * 
- *         for k in range(k_min, k_max + 1):
- *             self.build_k(seq, k)             # <<<<<<<<<<<<<<
- * 
- *     cdef void build_k(self, Sequence seq, size_t k) except *:
- */
-    ((struct __pyx_vtabstruct_6kmercy_9kmer_trie_KmerTrie *)__pyx_v_self->__pyx_vtab)->build_k(__pyx_v_self, __pyx_v_seq, __pyx_v_k); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 20, __pyx_L1_error)
-  }
-
-  /* "kmercy/kmer_trie.pyx":10
- *         self.nodes = None
- * 
- *     cdef void build(self, Sequence seq, size_t k_min, size_t k_max) except *:             # <<<<<<<<<<<<<<
- *         cdef:
- *             size_t k
- */
-
-  /* function exit code */
-  goto __pyx_L0;
-  __pyx_L1_error:;
-  __Pyx_AddTraceback("kmercy.kmer_trie.KmerTrie.build", __pyx_clineno, __pyx_lineno, __pyx_filename);
-  __pyx_L0:;
-  __Pyx_RefNannyFinishContext();
-}
-
-/* "kmercy/kmer_trie.pyx":22
- *             self.build_k(seq, k)
- * 
- *     cdef void build_k(self, Sequence seq, size_t k) except *:             # <<<<<<<<<<<<<<
- *         cdef:
  *             size_t i, j
  */
 
-static void __pyx_f_6kmercy_9kmer_trie_8KmerTrie_build_k(struct __pyx_obj_6kmercy_9kmer_trie_KmerTrie *__pyx_v_self, struct __pyx_obj_6kmercy_8sequence_Sequence *__pyx_v_seq, size_t __pyx_v_k) {
+static void __pyx_f_6kmercy_9kmer_trie_8KmerTrie_build(struct __pyx_obj_6kmercy_9kmer_trie_KmerTrie *__pyx_v_self, struct __pyx_obj_6kmercy_8sequence_Sequence *__pyx_v_seq, CYTHON_UNUSED size_t __pyx_v_k_min, size_t __pyx_v_k_max) {
   size_t __pyx_v_i;
   size_t __pyx_v_j;
   enum __pyx_t_6kmercy_8sequence_Base __pyx_v_base;
@@ -1660,52 +1601,52 @@ static void __pyx_f_6kmercy_9kmer_trie_8KmerTrie_build_k(struct __pyx_obj_6kmerc
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
-  __Pyx_RefNannySetupContext("build_k", 0);
+  __Pyx_RefNannySetupContext("build", 0);
 
-  /* "kmercy/kmer_trie.pyx":32
+  /* "kmercy/kmer_trie.pyx":20
  *             KmerTrieNodeC *child_ptr
  * 
- *         for i in range(seq.num_bases - k + 1):             # <<<<<<<<<<<<<<
+ *         for i in range(seq.num_bases - k_max + 1):             # <<<<<<<<<<<<<<
  *             node_index = 0
- *             for j in range(k):
+ *             for j in range(k_max):
  */
-  __pyx_t_1 = ((__pyx_v_seq->num_bases - __pyx_v_k) + 1);
+  __pyx_t_1 = ((__pyx_v_seq->num_bases - __pyx_v_k_max) + 1);
   __pyx_t_2 = __pyx_t_1;
   for (__pyx_t_3 = 0; __pyx_t_3 < __pyx_t_2; __pyx_t_3+=1) {
     __pyx_v_i = __pyx_t_3;
 
-    /* "kmercy/kmer_trie.pyx":33
+    /* "kmercy/kmer_trie.pyx":21
  * 
- *         for i in range(seq.num_bases - k + 1):
+ *         for i in range(seq.num_bases - k_max + 1):
  *             node_index = 0             # <<<<<<<<<<<<<<
- *             for j in range(k):
+ *             for j in range(k_max):
  *                 base = seq.get_base(i + j)
  */
     __pyx_v_node_index = 0;
 
-    /* "kmercy/kmer_trie.pyx":34
- *         for i in range(seq.num_bases - k + 1):
+    /* "kmercy/kmer_trie.pyx":22
+ *         for i in range(seq.num_bases - k_max + 1):
  *             node_index = 0
- *             for j in range(k):             # <<<<<<<<<<<<<<
+ *             for j in range(k_max):             # <<<<<<<<<<<<<<
  *                 base = seq.get_base(i + j)
  *                 base_index = <size_t>base
  */
-    __pyx_t_4 = __pyx_v_k;
+    __pyx_t_4 = __pyx_v_k_max;
     __pyx_t_5 = __pyx_t_4;
     for (__pyx_t_6 = 0; __pyx_t_6 < __pyx_t_5; __pyx_t_6+=1) {
       __pyx_v_j = __pyx_t_6;
 
-      /* "kmercy/kmer_trie.pyx":35
+      /* "kmercy/kmer_trie.pyx":23
  *             node_index = 0
- *             for j in range(k):
+ *             for j in range(k_max):
  *                 base = seq.get_base(i + j)             # <<<<<<<<<<<<<<
  *                 base_index = <size_t>base
  *                 node_ptr = <KmerTrieNodeC *>self.nodes.c_get_ptr(node_index)
  */
       __pyx_v_base = ((struct __pyx_vtabstruct_6kmercy_8sequence_Sequence *)__pyx_v_seq->__pyx_vtab)->get_base(__pyx_v_seq, (__pyx_v_i + __pyx_v_j));
 
-      /* "kmercy/kmer_trie.pyx":36
- *             for j in range(k):
+      /* "kmercy/kmer_trie.pyx":24
+ *             for j in range(k_max):
  *                 base = seq.get_base(i + j)
  *                 base_index = <size_t>base             # <<<<<<<<<<<<<<
  *                 node_ptr = <KmerTrieNodeC *>self.nodes.c_get_ptr(node_index)
@@ -1713,17 +1654,17 @@ static void __pyx_f_6kmercy_9kmer_trie_8KmerTrie_build_k(struct __pyx_obj_6kmerc
  */
       __pyx_v_base_index = ((size_t)__pyx_v_base);
 
-      /* "kmercy/kmer_trie.pyx":37
+      /* "kmercy/kmer_trie.pyx":25
  *                 base = seq.get_base(i + j)
  *                 base_index = <size_t>base
  *                 node_ptr = <KmerTrieNodeC *>self.nodes.c_get_ptr(node_index)             # <<<<<<<<<<<<<<
  *                 child_index = node_ptr.children[base_index]
  *                 if child_index == 0:
  */
-      __pyx_t_7 = ((struct __pyx_vtabstruct_6kmercy_11item_vector_ItemVector *)__pyx_v_self->nodes->__pyx_vtab)->c_get_ptr(__pyx_v_self->nodes, __pyx_v_node_index); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 37, __pyx_L1_error)
+      __pyx_t_7 = ((struct __pyx_vtabstruct_6kmercy_11item_vector_ItemVector *)__pyx_v_self->nodes->__pyx_vtab)->c_get_ptr(__pyx_v_self->nodes, __pyx_v_node_index); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 25, __pyx_L1_error)
       __pyx_v_node_ptr = ((struct __pyx_t_6kmercy_9kmer_trie_KmerTrieNodeC *)__pyx_t_7);
 
-      /* "kmercy/kmer_trie.pyx":38
+      /* "kmercy/kmer_trie.pyx":26
  *                 base_index = <size_t>base
  *                 node_ptr = <KmerTrieNodeC *>self.nodes.c_get_ptr(node_index)
  *                 child_index = node_ptr.children[base_index]             # <<<<<<<<<<<<<<
@@ -1732,7 +1673,7 @@ static void __pyx_f_6kmercy_9kmer_trie_8KmerTrie_build_k(struct __pyx_obj_6kmerc
  */
       __pyx_v_child_index = (__pyx_v_node_ptr->children[__pyx_v_base_index]);
 
-      /* "kmercy/kmer_trie.pyx":39
+      /* "kmercy/kmer_trie.pyx":27
  *                 node_ptr = <KmerTrieNodeC *>self.nodes.c_get_ptr(node_index)
  *                 child_index = node_ptr.children[base_index]
  *                 if child_index == 0:             # <<<<<<<<<<<<<<
@@ -1742,7 +1683,7 @@ static void __pyx_f_6kmercy_9kmer_trie_8KmerTrie_build_k(struct __pyx_obj_6kmerc
       __pyx_t_8 = ((__pyx_v_child_index == 0) != 0);
       if (__pyx_t_8) {
 
-        /* "kmercy/kmer_trie.pyx":40
+        /* "kmercy/kmer_trie.pyx":28
  *                 child_index = node_ptr.children[base_index]
  *                 if child_index == 0:
  *                     node_ptr.children[base_index] = self.nodes.num_items             # <<<<<<<<<<<<<<
@@ -1752,7 +1693,7 @@ static void __pyx_f_6kmercy_9kmer_trie_8KmerTrie_build_k(struct __pyx_obj_6kmerc
         __pyx_t_9 = __pyx_v_self->nodes->num_items;
         (__pyx_v_node_ptr->children[__pyx_v_base_index]) = __pyx_t_9;
 
-        /* "kmercy/kmer_trie.pyx":41
+        /* "kmercy/kmer_trie.pyx":29
  *                 if child_index == 0:
  *                     node_ptr.children[base_index] = self.nodes.num_items
  *                     child_index = self.nodes.num_items             # <<<<<<<<<<<<<<
@@ -1762,16 +1703,16 @@ static void __pyx_f_6kmercy_9kmer_trie_8KmerTrie_build_k(struct __pyx_obj_6kmerc
         __pyx_t_9 = __pyx_v_self->nodes->num_items;
         __pyx_v_child_index = __pyx_t_9;
 
-        /* "kmercy/kmer_trie.pyx":42
+        /* "kmercy/kmer_trie.pyx":30
  *                     node_ptr.children[base_index] = self.nodes.num_items
  *                     child_index = self.nodes.num_items
  *                     self.nodes.c_push_empty()             # <<<<<<<<<<<<<<
  *                 child_ptr = <KmerTrieNodeC *>self.nodes.c_get_ptr(child_index)
- *                 if j == k - 1:
+ *                 child_ptr.count += 1
  */
-        ((struct __pyx_vtabstruct_6kmercy_11item_vector_ItemVector *)__pyx_v_self->nodes->__pyx_vtab)->c_push_empty(__pyx_v_self->nodes); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 42, __pyx_L1_error)
+        ((struct __pyx_vtabstruct_6kmercy_11item_vector_ItemVector *)__pyx_v_self->nodes->__pyx_vtab)->c_push_empty(__pyx_v_self->nodes); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 30, __pyx_L1_error)
 
-        /* "kmercy/kmer_trie.pyx":39
+        /* "kmercy/kmer_trie.pyx":27
  *                 node_ptr = <KmerTrieNodeC *>self.nodes.c_get_ptr(node_index)
  *                 child_index = node_ptr.children[base_index]
  *                 if child_index == 0:             # <<<<<<<<<<<<<<
@@ -1780,47 +1721,28 @@ static void __pyx_f_6kmercy_9kmer_trie_8KmerTrie_build_k(struct __pyx_obj_6kmerc
  */
       }
 
-      /* "kmercy/kmer_trie.pyx":43
+      /* "kmercy/kmer_trie.pyx":31
  *                     child_index = self.nodes.num_items
  *                     self.nodes.c_push_empty()
  *                 child_ptr = <KmerTrieNodeC *>self.nodes.c_get_ptr(child_index)             # <<<<<<<<<<<<<<
- *                 if j == k - 1:
- *                     child_ptr.count += 1
- */
-      __pyx_t_7 = ((struct __pyx_vtabstruct_6kmercy_11item_vector_ItemVector *)__pyx_v_self->nodes->__pyx_vtab)->c_get_ptr(__pyx_v_self->nodes, __pyx_v_child_index); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 43, __pyx_L1_error)
-      __pyx_v_child_ptr = ((struct __pyx_t_6kmercy_9kmer_trie_KmerTrieNodeC *)__pyx_t_7);
-
-      /* "kmercy/kmer_trie.pyx":44
- *                     self.nodes.c_push_empty()
- *                 child_ptr = <KmerTrieNodeC *>self.nodes.c_get_ptr(child_index)
- *                 if j == k - 1:             # <<<<<<<<<<<<<<
- *                     child_ptr.count += 1
+ *                 child_ptr.count += 1
  *                 node_index = child_index
  */
-      __pyx_t_8 = ((__pyx_v_j == (__pyx_v_k - 1)) != 0);
-      if (__pyx_t_8) {
+      __pyx_t_7 = ((struct __pyx_vtabstruct_6kmercy_11item_vector_ItemVector *)__pyx_v_self->nodes->__pyx_vtab)->c_get_ptr(__pyx_v_self->nodes, __pyx_v_child_index); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 31, __pyx_L1_error)
+      __pyx_v_child_ptr = ((struct __pyx_t_6kmercy_9kmer_trie_KmerTrieNodeC *)__pyx_t_7);
 
-        /* "kmercy/kmer_trie.pyx":45
+      /* "kmercy/kmer_trie.pyx":32
+ *                     self.nodes.c_push_empty()
  *                 child_ptr = <KmerTrieNodeC *>self.nodes.c_get_ptr(child_index)
- *                 if j == k - 1:
- *                     child_ptr.count += 1             # <<<<<<<<<<<<<<
+ *                 child_ptr.count += 1             # <<<<<<<<<<<<<<
  *                 node_index = child_index
  * 
  */
-        __pyx_v_child_ptr->count = (__pyx_v_child_ptr->count + 1);
+      __pyx_v_child_ptr->count = (__pyx_v_child_ptr->count + 1);
 
-        /* "kmercy/kmer_trie.pyx":44
- *                     self.nodes.c_push_empty()
+      /* "kmercy/kmer_trie.pyx":33
  *                 child_ptr = <KmerTrieNodeC *>self.nodes.c_get_ptr(child_index)
- *                 if j == k - 1:             # <<<<<<<<<<<<<<
- *                     child_ptr.count += 1
- *                 node_index = child_index
- */
-      }
-
-      /* "kmercy/kmer_trie.pyx":46
- *                 if j == k - 1:
- *                     child_ptr.count += 1
+ *                 child_ptr.count += 1
  *                 node_index = child_index             # <<<<<<<<<<<<<<
  * 
  *     cdef size_t get_count(self, Sequence kmer) except *:
@@ -1829,10 +1751,10 @@ static void __pyx_f_6kmercy_9kmer_trie_8KmerTrie_build_k(struct __pyx_obj_6kmerc
     }
   }
 
-  /* "kmercy/kmer_trie.pyx":22
- *             self.build_k(seq, k)
+  /* "kmercy/kmer_trie.pyx":10
+ *         self.nodes = None
  * 
- *     cdef void build_k(self, Sequence seq, size_t k) except *:             # <<<<<<<<<<<<<<
+ *     cdef void build(self, Sequence seq, size_t k_min, size_t k_max) except *:             # <<<<<<<<<<<<<<
  *         cdef:
  *             size_t i, j
  */
@@ -1840,12 +1762,12 @@ static void __pyx_f_6kmercy_9kmer_trie_8KmerTrie_build_k(struct __pyx_obj_6kmerc
   /* function exit code */
   goto __pyx_L0;
   __pyx_L1_error:;
-  __Pyx_AddTraceback("kmercy.kmer_trie.KmerTrie.build_k", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("kmercy.kmer_trie.KmerTrie.build", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_L0:;
   __Pyx_RefNannyFinishContext();
 }
 
-/* "kmercy/kmer_trie.pyx":48
+/* "kmercy/kmer_trie.pyx":35
  *                 node_index = child_index
  * 
  *     cdef size_t get_count(self, Sequence kmer) except *:             # <<<<<<<<<<<<<<
@@ -1865,12 +1787,14 @@ static size_t __pyx_f_6kmercy_9kmer_trie_8KmerTrie_get_count(struct __pyx_obj_6k
   size_t __pyx_t_2;
   size_t __pyx_t_3;
   void *__pyx_t_4;
+  int __pyx_t_5;
+  int __pyx_t_6;
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("get_count", 0);
 
-  /* "kmercy/kmer_trie.pyx":53
+  /* "kmercy/kmer_trie.pyx":40
  *             Base base
  *             size_t base_index
  *             size_t node_index = 0             # <<<<<<<<<<<<<<
@@ -1879,7 +1803,7 @@ static size_t __pyx_f_6kmercy_9kmer_trie_8KmerTrie_get_count(struct __pyx_obj_6k
  */
   __pyx_v_node_index = 0;
 
-  /* "kmercy/kmer_trie.pyx":56
+  /* "kmercy/kmer_trie.pyx":43
  *             KmerTrieNodeC *node_ptr
  * 
  *         for i in range(kmer.num_bases):             # <<<<<<<<<<<<<<
@@ -1891,7 +1815,7 @@ static size_t __pyx_f_6kmercy_9kmer_trie_8KmerTrie_get_count(struct __pyx_obj_6k
   for (__pyx_t_3 = 0; __pyx_t_3 < __pyx_t_2; __pyx_t_3+=1) {
     __pyx_v_i = __pyx_t_3;
 
-    /* "kmercy/kmer_trie.pyx":57
+    /* "kmercy/kmer_trie.pyx":44
  * 
  *         for i in range(kmer.num_bases):
  *             base = kmer.get_base(i)             # <<<<<<<<<<<<<<
@@ -1900,7 +1824,7 @@ static size_t __pyx_f_6kmercy_9kmer_trie_8KmerTrie_get_count(struct __pyx_obj_6k
  */
     __pyx_v_base = ((struct __pyx_vtabstruct_6kmercy_8sequence_Sequence *)__pyx_v_kmer->__pyx_vtab)->get_base(__pyx_v_kmer, __pyx_v_i);
 
-    /* "kmercy/kmer_trie.pyx":58
+    /* "kmercy/kmer_trie.pyx":45
  *         for i in range(kmer.num_bases):
  *             base = kmer.get_base(i)
  *             base_index = <size_t>base             # <<<<<<<<<<<<<<
@@ -1909,44 +1833,81 @@ static size_t __pyx_f_6kmercy_9kmer_trie_8KmerTrie_get_count(struct __pyx_obj_6k
  */
     __pyx_v_base_index = ((size_t)__pyx_v_base);
 
-    /* "kmercy/kmer_trie.pyx":59
+    /* "kmercy/kmer_trie.pyx":46
  *             base = kmer.get_base(i)
  *             base_index = <size_t>base
  *             node_ptr = <KmerTrieNodeC *>self.nodes.c_get_ptr(node_index)             # <<<<<<<<<<<<<<
  *             node_index = node_ptr.children[base_index]
- *         node_ptr = <KmerTrieNodeC *>self.nodes.c_get_ptr(node_index)
+ *             if i != 0 and node_ptr.count == 0:
  */
-    __pyx_t_4 = ((struct __pyx_vtabstruct_6kmercy_11item_vector_ItemVector *)__pyx_v_self->nodes->__pyx_vtab)->c_get_ptr(__pyx_v_self->nodes, __pyx_v_node_index); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 59, __pyx_L1_error)
+    __pyx_t_4 = ((struct __pyx_vtabstruct_6kmercy_11item_vector_ItemVector *)__pyx_v_self->nodes->__pyx_vtab)->c_get_ptr(__pyx_v_self->nodes, __pyx_v_node_index); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 46, __pyx_L1_error)
     __pyx_v_node_ptr = ((struct __pyx_t_6kmercy_9kmer_trie_KmerTrieNodeC *)__pyx_t_4);
 
-    /* "kmercy/kmer_trie.pyx":60
+    /* "kmercy/kmer_trie.pyx":47
  *             base_index = <size_t>base
  *             node_ptr = <KmerTrieNodeC *>self.nodes.c_get_ptr(node_index)
  *             node_index = node_ptr.children[base_index]             # <<<<<<<<<<<<<<
+ *             if i != 0 and node_ptr.count == 0:
+ *                 return 0
+ */
+    __pyx_v_node_index = (__pyx_v_node_ptr->children[__pyx_v_base_index]);
+
+    /* "kmercy/kmer_trie.pyx":48
+ *             node_ptr = <KmerTrieNodeC *>self.nodes.c_get_ptr(node_index)
+ *             node_index = node_ptr.children[base_index]
+ *             if i != 0 and node_ptr.count == 0:             # <<<<<<<<<<<<<<
+ *                 return 0
+ *         node_ptr = <KmerTrieNodeC *>self.nodes.c_get_ptr(node_index)
+ */
+    __pyx_t_6 = ((__pyx_v_i != 0) != 0);
+    if (__pyx_t_6) {
+    } else {
+      __pyx_t_5 = __pyx_t_6;
+      goto __pyx_L6_bool_binop_done;
+    }
+    __pyx_t_6 = ((__pyx_v_node_ptr->count == 0) != 0);
+    __pyx_t_5 = __pyx_t_6;
+    __pyx_L6_bool_binop_done:;
+    if (__pyx_t_5) {
+
+      /* "kmercy/kmer_trie.pyx":49
+ *             node_index = node_ptr.children[base_index]
+ *             if i != 0 and node_ptr.count == 0:
+ *                 return 0             # <<<<<<<<<<<<<<
  *         node_ptr = <KmerTrieNodeC *>self.nodes.c_get_ptr(node_index)
  *         return node_ptr.count
  */
-    __pyx_v_node_index = (__pyx_v_node_ptr->children[__pyx_v_base_index]);
-  }
+      __pyx_r = 0;
+      goto __pyx_L0;
 
-  /* "kmercy/kmer_trie.pyx":61
+      /* "kmercy/kmer_trie.pyx":48
  *             node_ptr = <KmerTrieNodeC *>self.nodes.c_get_ptr(node_index)
  *             node_index = node_ptr.children[base_index]
+ *             if i != 0 and node_ptr.count == 0:             # <<<<<<<<<<<<<<
+ *                 return 0
+ *         node_ptr = <KmerTrieNodeC *>self.nodes.c_get_ptr(node_index)
+ */
+    }
+  }
+
+  /* "kmercy/kmer_trie.pyx":50
+ *             if i != 0 and node_ptr.count == 0:
+ *                 return 0
  *         node_ptr = <KmerTrieNodeC *>self.nodes.c_get_ptr(node_index)             # <<<<<<<<<<<<<<
  *         return node_ptr.count
  */
-  __pyx_t_4 = ((struct __pyx_vtabstruct_6kmercy_11item_vector_ItemVector *)__pyx_v_self->nodes->__pyx_vtab)->c_get_ptr(__pyx_v_self->nodes, __pyx_v_node_index); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 61, __pyx_L1_error)
+  __pyx_t_4 = ((struct __pyx_vtabstruct_6kmercy_11item_vector_ItemVector *)__pyx_v_self->nodes->__pyx_vtab)->c_get_ptr(__pyx_v_self->nodes, __pyx_v_node_index); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 50, __pyx_L1_error)
   __pyx_v_node_ptr = ((struct __pyx_t_6kmercy_9kmer_trie_KmerTrieNodeC *)__pyx_t_4);
 
-  /* "kmercy/kmer_trie.pyx":62
- *             node_index = node_ptr.children[base_index]
+  /* "kmercy/kmer_trie.pyx":51
+ *                 return 0
  *         node_ptr = <KmerTrieNodeC *>self.nodes.c_get_ptr(node_index)
  *         return node_ptr.count             # <<<<<<<<<<<<<<
  */
   __pyx_r = __pyx_v_node_ptr->count;
   goto __pyx_L0;
 
-  /* "kmercy/kmer_trie.pyx":48
+  /* "kmercy/kmer_trie.pyx":35
  *                 node_index = child_index
  * 
  *     cdef size_t get_count(self, Sequence kmer) except *:             # <<<<<<<<<<<<<<
@@ -2281,7 +2242,7 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {0, 0, 0, 0, 0, 0, 0}
 };
 static CYTHON_SMALL_CODE int __Pyx_InitCachedBuiltins(void) {
-  __pyx_builtin_range = __Pyx_GetBuiltinName(__pyx_n_s_range); if (!__pyx_builtin_range) __PYX_ERR(0, 19, __pyx_L1_error)
+  __pyx_builtin_range = __Pyx_GetBuiltinName(__pyx_n_s_range); if (!__pyx_builtin_range) __PYX_ERR(0, 20, __pyx_L1_error)
   __pyx_builtin_TypeError = __Pyx_GetBuiltinName(__pyx_n_s_TypeError); if (!__pyx_builtin_TypeError) __PYX_ERR(1, 2, __pyx_L1_error)
   return 0;
   __pyx_L1_error:;
@@ -2386,7 +2347,6 @@ static int __Pyx_modinit_type_init_code(void) {
   /*--- Type init code ---*/
   __pyx_vtabptr_6kmercy_9kmer_trie_KmerTrie = &__pyx_vtable_6kmercy_9kmer_trie_KmerTrie;
   __pyx_vtable_6kmercy_9kmer_trie_KmerTrie.build = (void (*)(struct __pyx_obj_6kmercy_9kmer_trie_KmerTrie *, struct __pyx_obj_6kmercy_8sequence_Sequence *, size_t, size_t))__pyx_f_6kmercy_9kmer_trie_8KmerTrie_build;
-  __pyx_vtable_6kmercy_9kmer_trie_KmerTrie.build_k = (void (*)(struct __pyx_obj_6kmercy_9kmer_trie_KmerTrie *, struct __pyx_obj_6kmercy_8sequence_Sequence *, size_t))__pyx_f_6kmercy_9kmer_trie_8KmerTrie_build_k;
   __pyx_vtable_6kmercy_9kmer_trie_KmerTrie.get_count = (size_t (*)(struct __pyx_obj_6kmercy_9kmer_trie_KmerTrie *, struct __pyx_obj_6kmercy_8sequence_Sequence *))__pyx_f_6kmercy_9kmer_trie_8KmerTrie_get_count;
   if (PyType_Ready(&__pyx_type_6kmercy_9kmer_trie_KmerTrie) < 0) __PYX_ERR(0, 1, __pyx_L1_error)
   #if PY_VERSION_HEX < 0x030800B1

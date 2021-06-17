@@ -14,5 +14,4 @@ cdef class KmerTrie(object):
         ItemVector nodes
     
     cdef void build(self, Sequence seq, size_t k_min, size_t k_max) except *
-    cdef void build_k(self, Sequence seq, size_t k) except *
     cdef size_t get_count(self, Sequence seq) except *
